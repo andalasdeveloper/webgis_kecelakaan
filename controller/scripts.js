@@ -57,7 +57,8 @@ function cekRadius(){
   console.log(rad);
 }
 
-function masjidradius(){ //menampilkan masjid berdasarkan radius 
+function masjidradius(){ //menampilkan spa berdasarkan radius
+  console.log("fungsi radius");
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   hapusInfo();
@@ -68,16 +69,17 @@ function masjidradius(){ //menampilkan masjid berdasarkan radius
   cekRadius();
   console.log(pos.lat);
   console.log(pos.lng);
+    console.log(rad);
 
   $.ajax({ 
     url: server+'data/masjidradius.php?lat='+pos.lat+'&lng='+pos.lng+'&rad='+rad, data: "", dataType: 'json', success: function(rows){
-      console.log("hy");
+      console.log("data ditemukan");
       for (var i in rows){
         var row = rows[i];
         var id = row.id;
         var nama = row.name;
-        var latitude = row.latitude ;
-        var longitude = row.longitude ;
+        var latitude = row.latitude;
+        var longitude = row.longitude;
         centerBaru = new google.maps.LatLng(latitude, longitude);
         marker = new google.maps.Marker({
           position: centerBaru,

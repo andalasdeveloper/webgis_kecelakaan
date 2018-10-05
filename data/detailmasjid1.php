@@ -6,10 +6,10 @@ $querysearch = "SELECT id, spa.name, address, diskon, image, ST_X(ST_Centroid(ge
 $hasil=pg_query($querysearch);
 while($row = pg_fetch_array($hasil)) {
 	$id = $row['id'];
-	$spa_name = $row['name'];
-	$address = $row['address'];
-	$diskon = $row['diskon'];
-	$image=$row['image'];
+    $spa_name = $row['name'];
+    $address = $row['address'];
+    $diskon = $row['diskon'];
+    $image=$row['image'];
 	$longitude=$row['lng'];
 	$latitude=$row['lat'];
 	if ($image=='null' || $image=='' || $image==null){
