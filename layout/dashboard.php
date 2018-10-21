@@ -56,7 +56,7 @@
                 </thead>
                 <tbody>
                   <?php
-                    include ("connect.php");
+                    include ("/ta_pariwisata/action/connect.php");
                     $sql = pg_query("SELECT * FROM event order by id asc");
                     while($data =  pg_fetch_array($sql)){
                       $id = $data['id'];
@@ -166,7 +166,7 @@
 
   <div class="row mt" style="display:none;" id="showlist">  
     <?php 
-    include 'connect.php';
+    include '/ta_pariwisata/action/connect.php';
     $sql = pg_query("SELECT * FROM worship_place");
     ?>
     <?php

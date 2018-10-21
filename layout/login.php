@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(isset($_SESSION['A'])){
-	echo"<script language='JavaScript'>document.location='index.php'</script>";
+	echo"<script language='JavaScript'>document.location='/ta_pariwisata/layout/admin/index.php'</script>";
     exit();
 }
 ?>
@@ -37,9 +37,6 @@ if(isset($_SESSION['A'])){
       <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
-
-	  
-	  	
 	  	
 		      <form class="form-login" action="act/session.php" method="post">
 		        <h2 class="form-login-heading">sign in now</h2>
