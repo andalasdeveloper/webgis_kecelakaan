@@ -225,11 +225,10 @@ function resultt(){
   $("#radiuss").hide();
   $("#infoo1").hide();
   $("#att2").hide();
-  $(ahide(); 
-}
+  
 
-function tampilsemua(){ //menampilkan semua masjid
-  $.ajax({ url: server+'data/carimasjid.php', data: "", dataType: 'json', success: function (rows){
+function tampilsemua(){ //menampilkan semua kecelakaan
+  $.ajax({ url: server+'data/carikecelakaan.php', data: "", dataType: 'json', success: function (rows){
     cari_masjid(rows);
   }});
 }
