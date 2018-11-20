@@ -37,7 +37,7 @@ while($row = pg_fetch_array($hasil)){
                         <td style='text-transform:capitalize;'><?php echo $address ?></td>
                     </tr>
                     <tr>
-                        <td><b>Nama Petugas<b></td>
+                        <td><b>Petugas Pelapor<b></td>
                         <td>: </td>
                         <td><?php echo($admin_name == NULL ? '<button class="label label-warning" data-toggle="modal" data-target="#set_admin_modal">Not Set</button>' : $admin_name);?></td>
                     </tr>

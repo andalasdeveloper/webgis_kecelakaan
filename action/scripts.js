@@ -225,15 +225,16 @@ function resultt(){
   $("#radiuss").hide();
   $("#infoo1").hide();
   $("#att2").hide();
-  
+  $("#infoev").hide(); 
+}
 
-function tampilsemua(){ //menampilkan semua kecelakaan
+function tampilsemua(){ //menampilkan semua masjid
   $.ajax({ url: server+'data/carikecelakaan.php', data: "", dataType: 'json', success: function (rows){
-    cari_masjid(rows);
+    cari_kecelakaan(rows);
   }});
 }
 
-function cari_masjid(rows){ 
+function cari_kecelakaan(rows){ 
   $('#hasilcari1').show();
   $('#hasilcari').empty();
   hapusInfo();
@@ -249,7 +250,7 @@ function cari_masjid(rows){
   {
     var row = rows[i];
     var id = row.id_kecelakaan;
-    var nama = row.id_kecelakaan;
+    var no_laporan = row.id_kecelakaan;
     var latitude = row.latitude ;
     var longitude = row.longitude ;
     centerBaru = new google.maps.LatLng(latitude, longitude);
@@ -267,10 +268,9 @@ function cari_masjid(rows){
     klikInfoWindow(id);
     map.setZoom(14);
     $('#hasilcari').append("<tr>"+
-      "<td>"+nama+"</td>"+
+      "<td>"+no_laporan+"</td>"+
       "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailkecelakaan(\""+id+"\");info1();'></a></td>"+
-      "<td><a role='button' class='btn btn-default fa fa-car' title='jalur angkot' onclick='angkotmesjid(\""+id+"\",\""+latitude+"\",\""+longitude+"\");info12();'></a></td>"+
-      "</tr>");
+     "</tr>");
   }
 }
 
@@ -612,100 +612,6 @@ function tampil_sekitar(latitude,longitude,nama){
 
 
 
-function detailow_infow(id){  //menampilkan Information ow  
-  $('#info').empty();
-  hapusInfo();
-  clearroute2();
-  clearroute();
-  $.ajax({ 
-    url: server+'data/detailow.php?cari='+id, data: "", dataType: 'json', success: function(rows){ 
-      console.log(id);
-      for (var i in rows){
-        console.log('dd');
-        var row = rows[i];
-        var id = row.id;
-        var name   = row.name;
-        var address = row.address;
-        var latitude  = row.latitude; 
-        var longitude = row.longitude ;
-        centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
-        marker = new google.maps.Marker({
-          position: centerBaru,
-          icon:'/ta_pariwisata/assets/ico/marker_tw.png',
-          map: map,
-          animation: google.maps.Animation.DROP,
-        });
-        console.log(latitude);
-        console.log(longitude);
-        markersDua.push(marker);
-        map.setCenter(centerBaru);
-        map.setZoom(18); 
-        infowindow = new google.maps.InfoWindow({
-          position: centerBaru,
-          content: "<span style=color:black><center><b>Information</b><br></center><br><i class='fa fa-home'></i> "+name+"<br><i class='fa fa-map-marker'></i> "+address+"<br><a role='button' title='Route from your position' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();resetangkot();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
-          pixelOffset: new google.maps.Size(0, -33)
-        });
-        infoDua.push(infowindow); 
-        hapusInfo();
-        infowindow.open(map);            
-      }           
-    }
-  }); 
-}
-
-
-
-
-
-
-function detailow(id1){  //menampilkan Information ow
-  $('#info').empty();
-  hapusInfo();
-  clearroute2();
-  clearroute();
-  hapusMarkerTerdekat();
-  $.ajax({ 
-    url: server+'data/detailow.php?cari='+id1, data: "", dataType: 'json', success: function(rows){ 
-      console.log(id1);
-      for (var i in rows) { 
-        console.log('dd');
-        var row = rows[i];
-        var id = row.id;
-        var name   = row.name;
-        var address = row.address;
-        var open = row.open;
-        var close = row.close;
-        var ticket = row.ticket;
-        var fasilitas = row.fasilitas;
-        var latitude  = row.latitude; 
-        var longitude = row.longitude ;
-        centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
-        marker = new google.maps.Marker({
-          position: centerBaru,
-          icon:'/ta_pariwisata/assets/ico/marker_tw.png',
-          map: map,
-          animation: google.maps.Animation.DROP,
-        });
-        console.log(latitude);
-        console.log(longitude);
-        markersDua.push(marker);
-        map.setCenter(centerBaru);
-        map.setZoom(18); 
-        $('#info').append("<tr><td><b>Name</b></td><td>:</td><td> "+name+"</td></tr><tr><td><b>Address </b></td><td>:</td><td> "+address+"</td></tr><tr><td><b>Open</b></td><td>:</td><td>"+open+"</td></tr><tr><td><b>Close</b></td><td>:</td><td> "+close+"</td></tr><tr><td><b>Price</b></td><td>:</td><td> "+ticket+"</td></tr>")
-        // <a class='btn btn-default fa fa-compass' title='Attraction Nearby' onclick='owsekitar("+latitude+","+longitude+",200);ow();owtampil();'></a></td></tr> ");
-        infowindow = new google.maps.InfoWindow({
-          position: centerBaru,
-          content: "<span style=color:black><center><b>Information</b><br></center><br><i class='fa fa-home'></i> "+name+"<br><i class='fa fa-map-marker'></i> "+address+"<br><a role='button' title='Route from your position' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();resetangkot();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
-          pixelOffset: new google.maps.Size(0, -33)
-        });
-        infoDua.push(infowindow); 
-        hapusInfo();
-        infowindow.open(map);
-      }  
-    }
-  }); 
-}
-
 function callRoute(start, end) {
   if (pos == 'null' || typeof(pos) == "undefined"){
     alert ('Please click button current position or button manual position first');
@@ -735,63 +641,6 @@ function callRoute(start, end) {
 }
 
 
-function tampilrute(id_angkot, route_color, latitude, longitude){
-  console.log("ini rute");
-  console.log(route_color);
-  ja = new google.maps.Data();
-  ja.loadGeoJson(server+'data/tampilrute.php?id_angkot='+id_angkot);
-  ja.setStyle(function(features){
-    return({
-      fillColor : 'yellow',
-      strokeColor: route_color,
-      strokeWeight : 2,
-      fillOpacity : 0.5,
-    });
-  });
-  ja.setMap(map);
-  angkot.push(ja);
-  map.setZoom(14);
-}
-
-function detailangkot(id_angkot, lat, lng, lat1, lng1){  
-  clearangkot();
-  hapusRadius();
-  console.log("D");
-  $.ajax({
-    url: server+'data/tampilrute.php?id_angkot='+id_angkot, data: "", dataType: 'json', success: function(rows){
-      console.log("Dii");
-      for (var i in rows.features){
-        console.log("Diii");
-        var id_angkot=rows.features[i].properties.id;
-        var route_color=rows.features[i].properties.route_color;
-        var latitude=rows.features[i].properties.latitude;
-        var longitude=rows.features[i].properties.longitude;
-        var jalur_angkot=rows.features[i].properties.track;
-        var jurusan=rows.features[i].properties.destination;
-        console.log(id_angkot);
-        tampilrute(id_angkot, route_color,latitude, longitude);
-        var centerBaru = new google.maps.LatLng(latitude, longitude);
-        map.setCenter(centerBaru);
-        var marker = new google.maps.Marker({
-          position: centerBaru,
-          animation: google.maps.Animation.DROP,              
-          // icon:'assets/ico/marker_angkot.png',
-          map: map
-        });
-        var infowindow = new google.maps.InfoWindow({
-          position: centerBaru,
-          content: "<b><u>Information</u></b><br>Route Code: "+id_angkot+"<br>Destination: "+jurusan+"<br>Track: "+jalur_angkot+"",
-        });
-        infowindow.open(map);
-        infoDua.push(infowindow); 
-        infowindow.open(map);  
-        route_sekitar(lat,lng,lat1,lng1);
-      }
-      jalurAngkot.push(ja);
-    }
-  });
-}
-
 function rutetampil(){
   $("#att2").show();
   $("#att1").hide();
@@ -803,71 +652,6 @@ function rutetampil(){
 }
 
 
-function klikInfoWindow_oleh(id){
-  google.maps.event.addListener(marker, "click", function(){
-    detailoleh_infow(id);
-  });
-}
-
-function klikInfoWindow_res(id){
-  google.maps.event.addListener(marker, "click", function(){
-    detailres_infow(id);
-  });
-}
-
-function klikInfoWindow_industri(id){
-  google.maps.event.addListener(marker, "click", function(){
-    detailindustri_infow(id);
-  });
-}
-
-function klikInfoWindow_hotel(id)
-{
-  google.maps.event.addListener(marker, "click", function(){
-    detailhotel_infow(id);
-  });
-}
-
-function klikInfoWindow_kuliner(id)
-{
-  google.maps.event.addListener(marker, "click", function(){
-    detailkuliner_infow(id);
-  });
-}
-
-
-
-function legenda()
-{
-  $('#tombol').empty();
-  $('#tombol').append('<a class="btn btn-default" role="button" id="hidelegenda" data-toggle="tooltip" onclick="hideLegenda()" title="Hide Legend"><i class="fa fa-eye-slash" style="color:black;"></i></a>');
-  
-  var layer = new google.maps.FusionTablesLayer({
-    query: {
-      select: 'Location',
-      from: '1NIVOZxrr-uoXhpWSQH2YJzY5aWhkRZW0bWhfZw'
-    },
-    map: map
-  });
-  var legend = document.createElement('div');
-  legend.id = 'legend';
-  var content = [];
-  content.push('<h4>Legend</h4>');
-  content.push('<p><div class="color b"></div>District Mandiangin Koto Selayan</p>');
-  content.push('<p><div class="color c"></div>District Guguak Panjang</p>');
-  content.push('<p><div class="color d"></div>District Aur Birugo Tigo Baleh</p>');
-  content.push('<p><div class="color e"></div>Place of Worship</p>');
-  content.push('<p><div class="color f"></div>Tourism</p>');
-  content.push('<p><div class="color g"></div>Small Industry</p>');
-  content.push('<p><div class="color h"></div>Restaurant</p>');
-  content.push('<p><div class="color i"></div>Hotel</p>');
-  content.push('<p><div class="color j"></div>Culinary</p>');
-  content.push('<p><div class="color k"></div>Souvenir</p>');
-  content.push('<p><div class="color l"></div>Route Angkot</p>');
-  legend.innerHTML = content.join('');
-  legend.index = 1;
-  map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
-}
 
 function hideLegenda() {
   $('#legend').remove();
