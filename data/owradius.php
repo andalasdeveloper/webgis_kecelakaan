@@ -1,5 +1,5 @@
 <?php
-include('../controller/connect.php');
+include('../action/connect.php');
 $latit=$_GET["lat"];
 $longi=$_GET["lng"];
 $rad=$_GET["rad"];

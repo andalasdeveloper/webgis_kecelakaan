@@ -1,129 +1,72 @@
-<?php 
-session_start();
-if(!isset($_SESSION['A'])){
-	echo"<script language='JavaScript'>document.location='login.php'</script>";
-	  exit();
-}
-include '../template/base.php';?>
-<?php startblock('title') ?>ADMIN<?php endblock() ?>
-<?php startblock('title') ?>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/js/gritter/css/jquery.gritter.css" />
-  <link href="/ta_pariwisata/layout/admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/js/bootstrap-fileupload/bootstrap-fileupload.css" />
-  <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/js/bootstrap-datepicker/css/datepicker.css" />
-  <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/js/bootstrap-daterangepicker/daterangepicker.css" />
-  <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/js/bootstrap-timepicker/compiled/timepicker.css" />
-  <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/js/bootstrap-datetimepicker/datertimepicker.html" />
-  <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/css/skin/_all-skins.css" />
-<?php endblock() ?>
+<?php
+//include '../template/admin-base.php';
+include $_SERVER['DOCUMENT_ROOT'].'/ta_pariwisata/value/location.php';
+include $layout.'/template/admin-base.php';
+?>
+<?php startblock('title') ?>DASHBOARD<?php endblock() ?>
 <?php startblock('body') ?>
-<?php include("../connect.php");?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Mosque Finder</title>
-
-    <link href="/ta_pariwisata/assets/css/bootstrap.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="/ta_pariwisata/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/css/zabuto_calendar.css">
-    <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/js/gritter/css/jquery.gritter.css" />
-    <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/lineicons/style.css">
-    <link href="/ta_pariwisata/assets/css/style.css" rel="stylesheet">
-    <link href="/ta_pariwisata/assets/css/style-responsive.css" rel="stylesheet">
-	<script src="inc/script.js" type="text/javascript"></script>
-	<link href="plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM2fDXHmGzCDmDBk3bdPIEjs6zwnI1kGQ&libraries=drawing"></script>
-    <script src="/ta_pariwisata/assets/js/chart-master/Chart.js"></script>
-    <link rel="stylesheet" type="text/css" href="../assets/js/bootstrap-fileupload/bootstrap-fileupload.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/js/bootstrap-datepicker/css/datepicker.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/js/bootstrap-daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/js/bootstrap-timepicker/compiled/timepicker.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/js/bootstrap-datetimepicker/datertimepicker.html" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/skin/_all-skins.css" />
-	
-  </head>
-
-  <body>
-
-  <section id="container" >
-      <header class="header black-bg">
-            <?PHP include("inc/header.php"); ?>
-        </header>
-      <aside>
-                    <div id="sidebar"  class="nav-collapse ">
-             <?PHP include("inc/sidebar.php"); ?>
-          </div>
-      </aside>
-
-      <section id="main-content">
-          <section class="wrapper">
-		  <div class="row mt">
-			 <?php
-			$p=$_GET['page'];
-			$page="pages/".$p.".php";
-			if(file_exists($page)){
-				include($page);
-			}elseif($p==""){
-				include('pages/info.php');
-			}else{
-				include('pages/404.php');
-			}
-		  ?>
-			</div>
-          </section>
-      </section>
-
-  </section>
-
+    <?php
     
-  
-  
-   <!-- js placed at the end of the document so the pages load faster -->
-    <script src="/ta_pariwisata/assets/js/jquery.js"></script>
-    <script src="/ta_pariwisata/assets/js/jquery-1.8.3.min.js"></script>
-    <script src="/ta_pariwisata/assets/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="/ta_pariwisata/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="/ta_pariwisata/assets/js/jquery.scrollTo.min.js"></script>
-    <script src="/ta_pariwisata/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="/ta_pariwisata/assets/js/jquery.sparkline.js"></script>
-   <script src="/ta_pariwisata/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-
-    <!--common script for all pages-->
-    <script src="/ta_pariwisata/assets/js/common-scripts.js"></script>
+    $p = $_GET['page'];
     
-    <script type="text/javascript" src="/ta_pariwisata/assets/js/gritter/js/jquery.gritter.js"></script>
-    <script type="text/javascript" src="/ta_pariwisata/assets/js/gritter-conf.js"></script>
-	<script src="/ta_pariwisata/ assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-	
-	<script type="text/javascript" src="/ta_pariwisata/assets/js/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-	<script type="text/javascript" src="/ta_pariwisata/assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="/ta_pariwisata/assets/js/bootstrap-daterangepicker/date.js"></script>
-	<script type="text/javascript" src="/ta_pariwisata/assets/js/bootstrap-daterangepicker/daterangepicker.js"></script>
-	
-	<script type="text/javascript" src="/ta_pariwisata/assets/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-	<script type="text/javascript" src="/ta_pariwisata/assets/js/bootstrap-daterangepicker/moment.min.js"></script>
-	<script type="text/javascript" src="/ta_pariwisata/assets/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-	<script src="/ta_pariwisata/assets/js/advanced-form-components.js"></script>
-     <script type="text/javascript">
-      $(function () {
-        $('#example1, #example2, #example3').dataTable({
-          "bPaginate": true,
-          "bLengthChange": true,
-          "bFilter": true,
-          "bSort": true,
-          "bInfo": true,
-          "bAutoWidth": false,
-		  "iDisplayLength": 10,
-		  "oLanguage": {
-			 "sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
-			 "sLengthMenu": "Show _MENU_ entries",
-			 "sSearch": "Search:"
-			}
+    $page = $p.".php";
+    if(file_exists($page)){
+        require_once $action.'/connect.php';
+        include($layout.'/admin/'.$page);
+    }elseif($p=="") {
+        require $action.'/admin/countmes.php'; ?>
+        <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+            <div class="row">
+                <div class="col-lg-9 main-chart">
+                    <div class="row mtbox">
+                        <a href="?page=listspa">
+                            <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                                <div class="box1">
+                                    <span class="li_shop"></span>
+                                    <h3><?php echo $data['kecelakaan'] ?></h3>
+                                </div>
+                                <p><?php echo $data['kecelakaan'] ?> Accident is registered on your website</p>
+                            </div>
+                        </a>
+                        <a href="?page=user">
+                            <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                                <div class="box1">
+                                    <span class="li_user"></span>
+                                    <h3><?php echo $data['user'] ?></h3>
+                                </div>
+                                <p><?php echo $data['user'] ?> user's is registered on your website</p>
+                            </div>
+                        </a>
+                    </div><!-- /row mt -->
+                </div><!-- /col-lg-9 END SECTION MIDDLE -->
+            </div>
+        </div>
+        <?php
+    }else{
+        include($layout."/template/404.php");
+    }
+        ?>
+<?php endblock() ?>
+<?php startblock('js') ?>
+    <script src="/ta_pariwisata/assets/js/lightslider.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#content-slider").lightSlider({
+            loop:true,
+            keyPress:true
         });
-      });
-    </script>    
-  </body>
-</html>
+        $('#image-gallery').lightSlider({
+            gallery:true,
+            item:1,
+            thumbItem:9,
+            slideMargin: 0,
+            speed:500,
+            auto:true,
+            loop:true,
+            onSliderLoad: function() {
+                $('#image-gallery').removeClass('cS-hidden');
+            }
+        });
+    });
+    </script>
+<?php endblock() ?>

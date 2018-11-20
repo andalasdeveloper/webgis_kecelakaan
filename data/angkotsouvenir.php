@@ -1,5 +1,5 @@
 <?php
-    include("../controller/connect.php");
+    include("../action/connect.php");
     $id = $_GET['id'];
 
     $result=  pg_query("SELECT detail_souvenir.id_souvenir,angkot.destination, angkot.route_color, detail_souvenir.id_angkot,souvenir.name, ST_X(ST_Centroid(souvenir.geom)) AS longitude, ST_Y(ST_CENTROID(souvenir.geom)) As latitude, lat, lng, description FROM detail_souvenir left join angkot on detail_souvenir.id_angkot=angkot.id left join souvenir on detail_souvenir.id_souvenir=souvenir.id where detail_souvenir.id_souvenir='$id' ");

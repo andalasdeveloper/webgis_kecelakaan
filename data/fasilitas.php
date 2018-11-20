@@ -1,5 +1,5 @@
 <?php
-include ('../controller/connect.php');
+include ('../action/connect.php');
 $id=$_GET["id"];
 $dataarray=array();
  

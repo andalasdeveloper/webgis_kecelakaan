@@ -1,5 +1,5 @@
 <?php
-require'../controller/connect.php';
+require'../action/connect.php';
 
 
 $lay=$_GET['lay'];

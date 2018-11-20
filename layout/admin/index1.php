@@ -1,4 +1,4 @@
-<?php 
+?php 
 session_start();
 if(!isset($_SESSION['P'])){
 	echo"<script language='JavaScript'>document.location='login.php'</script>";

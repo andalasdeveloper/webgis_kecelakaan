@@ -1,5 +1,5 @@
 <?php
-include("../controller/connect.php");
+include("../action/connect.php");
 $jur = $_GET["jur"];
 
 $querysearch	="SELECT id, destination, ST_X(ST_Centroid(geom)) AS lng, ST_Y(ST_CENTROID(geom)) As lat from angkot where id='$jur'";

@@ -1,5 +1,5 @@
 <?php
-include("../controller/connect.php");
+include("../action/connect.php");
 $id = $_GET["id_kategori"];
 
 $querysearch	="	SELECT a.id, a.name,a.id_category,ST_X(ST_Centroid(a.geom)) AS lng, ST_Y(ST_CENTROID(a.geom)) As lat FROM worship_place as a left join category_worship_place as b on a.id_category=b.id  where b.id=$id

@@ -1,0 +1,121 @@
+/* fab位置 */
+.fab{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* ボタン見た目調整 */
+.fab .btn-fab{
+    padding: 0;
+    margin: 0;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 60px;
+    -moz-border-radius: 60px;
+    -webkit-border-radius: 60px;
+    display: block;
+    text-align: center;
+    position: relative;
+
+    box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.26);
+    -webkit-box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.26);
+
+    transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+}
+/* テキスト */
+.fab .btn-fab .btn-fab-text{
+    line-height: 1em;
+    color: #fff;
+    position: absolute;
+    right: 70px;
+    background-color: rgba(0, 0, 0, .8);
+    padding: 5px 10px;
+    top: 25%;
+    white-space: nowrap;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+
+    display: none;
+
+    transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+}
+/* テキスト吹き出し*/
+.fab .btn-fab .btn-fab-text:before {
+    content: "";
+    position: absolute;
+    top: 50%; right: -4px;
+    margin-top: -4px;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 4px 0 4px 4px;
+    border-color: transparent transparent transparent rgba(0, 0, 0, .8);
+    z-index: 0;
+
+    transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+}
+/* テキストonMouse時*/
+.fab:hover .btn-fab .btn-fab-text{
+    display: inline-block;
+}
+
+/* 子ボタングループ */
+.fab .fab-group{
+    position: fixed;
+    display: block;
+    bottom: 80px;
+    right: -320px;
+
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3 ease;
+}
+/* onMouse */
+.fab:hover .fab-group{
+    right: 30px;
+}
+/* 子ボタン */
+.fab .fab-group .btn-fab{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 40px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    margin-bottom: 8px;
+}
+
+/* 子ボタンテキスト */
+.fab .fab-group .btn-fab-text{
+    right: 50px;
+}
+
+/* 画像 */
+.fab .btn-fab img{
+    display: block;
+    width: 60px;
+    height: 60px;
+}
+.fab .fab-group-item  img{
+    width: 40px;
+    height: 40px;
+}
+
+/* テキスト Onmouse*/
+.fab .btn-fab:hover .btn-fab-text{
+    color: #333;
+    background-color: rgba(255, 255, 255, .8);
+    box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.26);
+    -webkit-box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.26);
+}
+.fab .btn-fab:hover .btn-fab-text:before {
+    border-color: transparent transparent transparent rgba(255, 255, 255, .8);
+    box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.26);
+    -webkit-box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.26);
+}

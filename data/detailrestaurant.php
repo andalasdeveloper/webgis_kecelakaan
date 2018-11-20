@@ -1,5 +1,5 @@
 <?php
-require '../controller/connect.php';
+require '../action/connect.php';
 
 $cari = $_GET["cari"];
 $querysearch	= "select id, name, address, cp, open, close, capacity, employee, mushalla, park_area, bathroom, ST_X(ST_Centroid(geom)) AS longitude, ST_Y(ST_CENTROID(geom)) As latitude from restaurant where id='$cari'";

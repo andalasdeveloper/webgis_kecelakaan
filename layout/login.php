@@ -14,7 +14,7 @@ if(isset($_SESSION['A'])){
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>DASHGUM - Bootstrap Admin Template</title>
+    <title>Kecelakaan</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/ta_pariwisata/assets/css/bootstrap.css" rel="stylesheet">
@@ -33,25 +33,15 @@ if(isset($_SESSION['A'])){
   </head>
 
   <body>
-
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
-	  	
-		      <form class="form-login" action="act/session.php" method="post">
-		        <h2 class="form-login-heading">sign in now</h2>
-		        <div class="login-wrap">       
-		            <input type="text" class="form-control" placeholder="Username" name="username" autofocus>&nbsp
-		            <input type="password" class="form-control" name="password" placeholder="Password">&nbsp
-		            <button class="btn btn-theme btn-block" type="submit" name="submit"><i class="fa fa-lock"></i> SIGN IN</button>
-		            <hr>
-		
-		        </div>
-			
-		      </form>	  	
-	  	
-
-	 
+      <form class="form-login" action="/ta_pariwisata/action/auth/session.php" method="post">
+        <h2 class="form-login-heading">sign in now</h2>
+        <div class="login-wrap">
+            <input type="text" class="form-control" placeholder="Username" name="username" autofocus>&nbsp
+            <input type="password" class="form-control" name="password" placeholder="Password">&nbsp
+            <button class="btn btn-theme btn-block" type="submit" name="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+            <hr>
+        </div>
+      </form>
 
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="/ta_pariwisata/assets/js/jquery.js"></script>
@@ -61,11 +51,8 @@ if(isset($_SESSION['A'])){
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
     <script type="text/javascript" src="/ta_pariwisata/assets/js/jquery.backstretch.min.js"></script>
     <script>
-        $.backstretch(/ta_pariwisata/assets/img/say.png", {speed: 500});
+        $.backstretch("/ta_pariwisata/assets/img/login- .jpg", {speed: 500});
     </script>
-
-
   </body>
-
 <!-- Mirrored from demo.gridgum.com/templates/AdminDashboard/DashGum/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Apr 2017 13:34:16 GMT -->
 </html>

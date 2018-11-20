@@ -1,5 +1,5 @@
 <?php
-require '../controller/connect.php';
+require '../action/connect.php';
 $cari = $_GET["cari"];
 $querysearch ="select id, name, address, owner, cp, employee, ST_X(ST_Centroid(geom)) AS lng, ST_Y(ST_CENTROID(geom)) As lat from souvenir where id='$cari'";	   
 $hasil=pg_query($querysearch);

@@ -1,6 +1,6 @@
 <?php 
 
-require '../controller/connect.php';
+require '../action/connect.php';
 $id_angkot = $_GET['id_angkot'];
 $querysearch = "SELECT row_to_json(fc) FROM (SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(a.geom)::json As geometry, row_to_json((SELECT l FROM(SELECT a.id, a.destination, a.track, a.route_color, ST_X(ST_Centroid(a.geom)) As longitude, ST_Y(ST_CENTROID(a.geom)) As latitude) As l)) As properties FROM angkot As a where a.id='$id_angkot') As f) As fc";
 

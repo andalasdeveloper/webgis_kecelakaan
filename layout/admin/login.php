@@ -33,28 +33,18 @@ if(isset($_SESSION['A'])){
   </head>
 
   <body>
-
       <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
-
-	  
-	  	
-	  	
-		      <form class="form-login" action="act/session.php" method="post">
-		        <h2 class="form-login-heading">sign in now</h2>
-		        <div class="login-wrap">       
-		            <input type="text" class="form-control" placeholder="Username" name="username" autofocus>&nbsp
-		            <input type="password" class="form-control" name="password" placeholder="Password">&nbsp
-		            <button class="btn btn-theme btn-block" type="submit" name="submit"><i class="fa fa-lock"></i> SIGN IN</button>
-		            <hr>
-		
-		        </div>
-			
-		      </form>	  	
-	  	
-
-	 
+      <form class="form-login" action="/ta_pariwisata/action/auth/session.php" method="post">
+        <h2 class="form-login-heading">sign in now</h2>
+        <div class="login-wrap">
+            <input type="text" class="form-control" placeholder="Username" name="username" autofocus>&nbsp
+            <input type="password" class="form-control" name="password" placeholder="Password">&nbsp
+            <button class="btn btn-theme btn-block" type="submit" name="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+            <hr>
+        </div>
+      </form>
 
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="/ta_pariwisata/assets/js/jquery.js"></script>

@@ -10,15 +10,6 @@ include ('inc/connect.php');
 			$data = pg_fetch_assoc($query);
 			return $data;
 		}
-		
- 
-
-  
-
-	
-
-
-
  ?>
 
 

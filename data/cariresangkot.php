@@ -1,6 +1,6 @@
 
 <?php
-require '../controller/connect.php';
+require '../action/connect.php';
 
 $cari_nama = $_GET["cari_nama"];
  

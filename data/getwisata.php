@@ -1,5 +1,5 @@
 <?php 
-require '../controller/connect.php';
+require '../action/connect.php';
 $idik = "IK2";
 $ow = "101";
 $querysearch ="SELECT h.id_hotel, nama_hotel, h.alamat, st_x(st_centroid(h.geom)) as longitude, 

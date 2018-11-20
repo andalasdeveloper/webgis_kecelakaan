@@ -1,16 +1,71 @@
 <?php include 'template/base.php' ?>
 <?php startblock('title') ?>DASHBOARD<?php endblock() ?>
+<?php startblock('css') ?>
+    <style type="text/css">
+        #legend {
+            background:white;
+            padding: 10px;
+            margin: 5px;
+            font-size: 12px;
+            font-color: blue;
+            font-family: Arial, sans-serif;
+            opacity: 2.5;
+        }
+        .color {
+            border: 1px solid;
+            height: 12px;
+            width: 12px;
+            margin-right: 3px;
+            float: left;
+        }
+        .a {
+            background: #f58d6f;
+        }
+        .b {
+            background: #f58d6f;
+        }
+        .c {
+            background: #fce8b7;
+        }
+        .d {
+            background: #ec87ec;
+        }
+        .e {
+            background: #42cb6f;
+        }
+        .f {
+            background: #5c9ded;
+        }
+        .g {
+            background: #373435;
+        }
+        .h {
+            background: #d51e5a;
+        }
+        .i {
+            background: #9398ec;
+        }
+        .j {
+            background: #f9695d;
+        }
+        .k {
+            background: #ec87bf;
+        }
+        .l {
+            background: navy;
+        }
+    </style>
+<?php endblock() ?>
 <?php startblock('body') ?>
   <!-- <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 main-chart">  -->         
   <div class="row mt">
     <div class="col-md-8 col-sm-8 col-lg-8 col-xs-8 mb" id="hide2">
       <section class="panel">
         <header class="panel-heading">
-          <label style="color: black">Google Map with Location List  </label>
+          <label style="color: black">Google Map with Location List</label>
           <a class="btn btn-default" role="button" data-toggle="collapse" onclick="aktifkanGeolocation()" title="Current Position"><i class="fa fa-map-marker" style="color:black;"></i></a>
           <a class="btn btn-default" role="button" data-toggle="collapse" onclick="manualLocation()" title=" Manual Position"><i class="fa fa-location-arrow" style="color:black;"></i></a>
           <a class="btn btn-default" role="button" data-toggle="collapse" href="#terdekat" title="Nearby" aria-controls="terdekat"><i class="fa fa-road" style="color:black;"></i></a>
-          <a class="btn btn-default" role="button" data-toggle="collapse" onclick="tampilsemua();resultt()" title="All Mosque" aria-controls="terdekat"><i class="fa fa-map-marker" style="color:black;"></i></a>
           <label id="tombol"><a class="btn btn-default" role="button" id="showlegenda" data-toggle="collapse" onclick="legenda()" title="Legend"><i class="fa fa-eye" style="color:black;"></i></a></label>
           <label></label>
           <div class="collapse" id="terdekat">
@@ -30,7 +85,7 @@
       <!--COMPLETED ACTIONS DONUTS CHART-->
       <section class="panel">
         <div class="panel-body">
-          <a class="btn btn-compose">Result</a>
+          <h3>Result</h3>
             <div class="box-body" style="max-height:400px;overflow:auto;">
               <div class="form-group" id="hasilcari1" style="display:none;">
                 <table class="table table-bordered" id='hasilcari'>
@@ -41,10 +96,11 @@
       </section>
     </div>
 
+
     <div class="col-sm-4" style="display:none;" id="eventt">
       <section class="panel">
         <div class="panel-body">
-          <a class="btn btn-compose">Event</a>
+          <a class="btn btn-compose">Korban Kecelakaan</a>
           <div class="box-body" style="max-height:350px;overflow:auto;">
             <div class="form-group" id="hasilcari1">
               <table id="example1" class="table table-hover table-bordered table-striped">

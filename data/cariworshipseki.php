@@ -1,6 +1,6 @@
 <?php
 
-	include('../controller/connect.php');
+	include('../action/connect.php');
     $latit = $_GET['lat'];
     $longi = $_GET['long'];
 	$rad=$_GET['rad'];

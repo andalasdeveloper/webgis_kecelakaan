@@ -1,5 +1,5 @@
 <?php
-require '../controller/connect.php';
+require '../action/connect.php';
 if(isset($_GET['tgl']))
 {
 $tgl = $_GET['tgl']; 

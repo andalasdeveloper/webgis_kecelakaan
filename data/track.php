@@ -1,6 +1,6 @@
 <?php
 
-	include('../controller/connect.php');
+	include('../action/connect.php');
     $lat1 = $_GET['lat1'];
     $lng1 = $_GET['lng1'];
     $lat2 = $_GET['lat2'];

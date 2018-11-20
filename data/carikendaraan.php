@@ -1,5 +1,5 @@
 <?php
-    include("../controller/connect.php");
+    include("../action/connect.php");
     $status=$_GET['status'];
     if ($status=='bus')
     {

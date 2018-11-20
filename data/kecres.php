@@ -1,5 +1,5 @@
 <?php
-require '../controller/connect.php';
+require '../action/connect.php';
 
 $kecamatan_id=$_GET['kecamatan'];
 $querysearch = pg_query("SELECT 

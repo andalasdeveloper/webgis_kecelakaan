@@ -1,5 +1,6 @@
 <?php
-include('../controller/connect.php');
+include ($_SERVER['DOCUMENT_ROOT']."/ta_pariwisata/value/location.php");
+require $action.'/connect.php';
 $latit=$_GET["lat"];
 $longi=$_GET["lng"];
 $rad=$_GET["rad"];

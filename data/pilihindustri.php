@@ -1,5 +1,5 @@
 <?php
-    include("../controller/connect.php");
+    include("../action/connect.php");
     $result=  pg_query("select * from industri_kecil order by id_industri ASC");
         while($baris = pg_fetch_array($result))
             {

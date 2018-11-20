@@ -2,10 +2,10 @@
 session_start();
 
 if (isset($_COOKIE['login'])) {
-    header("Location:layout/dashboard.php");
+    header("Location:/ta_pariwisata/home");
 }
 else{
-  header("Location:layout/dashboard.php");  
+  header("Location:/ta_pariwisata/home");
   // phpinfo();
 }
 

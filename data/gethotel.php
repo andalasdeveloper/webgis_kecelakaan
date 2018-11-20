@@ -1,5 +1,5 @@
 <?php 
-require '../controller/connect.php';
+require '../action/connect.php';
 $idik = $_GET["idik"];
 $querysearch ="SELECT h.id_hotel, nama_hotel, h.alamat, st_x(st_centroid(h.geom)) as longitude, 
 st_y(st_centroid(h.geom)) as latitude, ik.id_industri, ST_Distance_Sphere(h.geom, ik.geom)/1000 as jarak_dari_ik from hotel h, industri_kecil ik where ik.id_industri='".$idik."' and ((ST_Distance_Sphere(h.geom, ik.geom)/1000>=0.5) and (ST_Distance_Sphere(h.geom, ik.geom)/1000<=1)) ";

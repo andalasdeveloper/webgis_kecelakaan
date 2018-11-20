@@ -41,7 +41,7 @@ if(!isset($_SESSION['A'])){
         </div>
         <header class="header black-bg">
 
-            <a class="logo"><p><img src="assets/ico/111.png"><b>W</b>EB<b style="font-size: 17px">GIS</b>&nbspADMIN</p></a>
+            <a class="logo"><p><img src="/ta_pariwisata/assets/ico/111.png"><b>W</b>EB<b style="font-size: 17px">GIS</b>&nbspADMIN</p></a>
             <ul class="nav pull-right top-menu">
                 <a href="act/logout.php" class="logo" style="font-size:14px"><i class="fa fa-sign-in"></i>
                     <b>Logout</b></a>

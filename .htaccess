@@ -1,18 +1,13 @@
-#Allow ModRewrite to Work
-Options FollowSymlinks
-
-#Turn On Rewrite Engine
 RewriteEngine On
-RewriteEngine on
-RewriteBase /
 
-#Redirect All Request to Index
-RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([a-zA-Z+])$ layout/$1.php [NC,L]
+RewriteCond %{REQUEST_FILENAME} !-f
 
+RewriteRule ^(home)$ layout/dashboard.php [L]
+RewriteRule ^(admin)$ layout/admin/index.php [L]
+#RewriteRule ^(admin)$ layout/admin/index.php [L]
+RewriteRule ^(login)$ layout/login.php [L]
 
-RewriteRule ^(contact)$ $1.php [NC,L]
-RewriteRule ^([-\w]+)$ single.php?url=$1 [NC,L]
-RewriteRule ^category/([-\w]+)/(\d+)$ category.php?url=$1&page=$2 [NC,L]
-RewriteRule ^category/([-\w]+)$ category.php?url=$1 [NC,L]
+#NC = No Case / Case Insensitive
+#L =
+#B =
