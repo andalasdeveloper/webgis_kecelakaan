@@ -24,16 +24,19 @@
             <a class="btn btn-compose">Add Accident</a>
             <div class="box-body">
                 <div class="form-group" id="hasilcari1">
-                    <form role="form" action="/ta_pariwisata/action/admin/insertkecelakaan.php" enctype="multipart/form-data" method="post">
+                    <form role="form" action="/Basisdatalanjut/action/admin/insertkecelakaan.php" enctype="multipart/form-data" method="post">
                         <?php
                         $query = pg_query("SELECT MAX(id_kecelakaan) AS id FROM kecelakaan");
                         
                         $id_pelapor = $_SESSION['id_user'];
+                        $nama_pelapor = $_SESSION['name'];
                         $result = pg_fetch_array($query);
                         $idmax = $result['id'];
                         if ($idmax==null) $idmax=1;
                         else $idmax++;
                         ?>
+
+                        <input type="hidden" class="form-control" name="id_pelapor" value="<?php echo $id_pelapor ?>" placeholder="<?php echo $nama_pelapor ?>"> 
 
                         <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $idmax;?>">
                         <div class="form-group">
@@ -45,11 +48,10 @@
                             <input type="text" class="form-control" name="no_laporan" value="<?php echo
                              $idmax?>"> 
                         </div>
-                        <div class="form-group">
-                            <label for="pelapor"><span style="color:red">*</span>ID Pelapor</label>
-                            <input type="text" class="form-control" name="id_pelapor" value="<?php
-                            echo $id_pelapor ?>" readonly required> 
-                        </div>
+                        
+                           
+                          
+                        
                         <div class="form-group">
                             <label for="nama"><span style="color:red">*</span>Total Kerugian</label>
                             <input type="text" class="form-control" name="total_kerugian" value="" required>
@@ -68,7 +70,7 @@
                             <div class="col-md-9">
                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                     <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                        <img src="/ta_pariwisata/data/foto/no.png" alt="" />
+                                        <img src="/Basisdatalanjut/data/foto/no.png" alt="" />
                                     </div>
                                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                     <div>
@@ -94,5 +96,5 @@
     </section>
 </div>
 
-<script src="/ta_pariwisata/action/admin/mapupd.js" type="text/javascript"></script>
+<script src="/Basisdatalanjut/action/admin/mapupd.js" type="text/javascript"></script>
 <!--                        

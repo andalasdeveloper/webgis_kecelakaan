@@ -112,7 +112,7 @@
                 </thead>
                 <tbody>
                   <?php
-                    include ("/ta_pariwisata/action/connect.php");
+                    include ("/Basisdatalanjut/action/connect.php");
                     $sql = pg_query("SELECT * FROM event order by id asc");
                     while($data =  pg_fetch_array($sql)){
                       $id = $data['id'];
@@ -196,19 +196,6 @@
       </section>
     </div>
 
-    <div class="col-sm-8" style="display:none;" id="att1">  
-      <section class="panel">
-        <div class="panel-body" >
-          <a class="btn btn-compose">Attraction Around Mosque</a>
-          <div class="box-body" style="max-height:350px;overflow:auto;">
-            <div class="form-group">
-              <table class="table table-bordered" id='info1'>
-              </table>   
-            </div>                  
-          </div>
-        </div>
-      </section>
-    </div>
               
     <div class="col-sm-4" style="display:none;" id="att2">
       <section class="panel">
@@ -220,42 +207,5 @@
     </div>
   </div>
 
-  <div class="row mt" style="display:none;" id="showlist">  
-    <?php 
-    include '/ta_pariwisata/action/connect.php';
-    $sql = pg_query("SELECT * FROM worship_place");
-    ?>
-    <?php
-    $jml_kolom=3;
-    $cnt = 1;
-    while($data =  pg_fetch_assoc($sql)){
-      if ($cnt >= $jml_kolom) {
-        echo "<div class='row mt mb'>";
-      }
-      ?>
-    <div class="row-mt">
-      <div class="col-lg-4 col-md-4 col-sm-8 col-xs-6 desc">
-        <div class="project-wrapper">
-          <div class="project">
-            <div class="photo-wrapper">
-              <div class="photo">
-                <a class="fancybox" href="foto/<?php echo $data['image']; ?>"><img class="img-responsive" src="foto/<?php echo $data['image']; ?>" alt=""></a>
-              </div>
-              <div class="overlay"></div>
-              <p style="color: #f3fff4"><?php echo $data['name']; ?><br><?php echo $data['address']; ?></p>
-            </div>
-          </div>
-        </div>
-        <?php
-        if ($cnt >= $jml_kolom){
-          $cnt = 0;
-          echo "</div>";
-        }
-        $cnt++;
-      }
-      ?>
-      </div>
-    </div>
-  </div>
-
+  
 <?php endblock() ?>

@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(isset($_SESSION['A'])){
-	echo"<script language='JavaScript'>document.location='/ta_pariwisata/layout/admin/index.php'</script>";
+	echo"<script language='JavaScript'>document.location='/Basisdatalanjut/layout/admin/index.php'</script>";
     exit();
 }
 ?>
@@ -17,13 +17,13 @@ if(isset($_SESSION['A'])){
     <title>Kecelakaan</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/ta_pariwisata/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/Basisdatalanjut/assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
-    <link href="/ta_pariwisata/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="/Basisdatalanjut/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
         
     <!-- Custom styles for this template -->
-    <link href="/ta_pariwisata/assets/css/style.css" rel="stylesheet">
-    <link href="/ta_pariwisata/assets/css/style-responsive.css" rel="stylesheet">
+    <link href="/Basisdatalanjut/assets/css/style.css" rel="stylesheet">
+    <link href="/Basisdatalanjut/assets/css/style-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,7 +33,7 @@ if(isset($_SESSION['A'])){
   </head>
 
   <body>
-      <form class="form-login" action="/ta_pariwisata/action/auth/session.php" method="post">
+      <form class="form-login" action="/Basisdatalanjut/action/auth/session.php" method="post">
         <h2 class="form-login-heading">sign in now</h2>
         <div class="login-wrap">
             <input type="text" class="form-control" placeholder="Username" name="username" autofocus>&nbsp
@@ -44,14 +44,14 @@ if(isset($_SESSION['A'])){
       </form>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="/ta_pariwisata/assets/js/jquery.js"></script>
-    <script src="/ta_pariwisata/assets/js/bootstrap.min.js"></script>
+    <script src="/Basisdatalanjut/assets/js/jquery.js"></script>
+    <script src="/Basisdatalanjut/assets/js/bootstrap.min.js"></script>
 
     <!--BACKSTRETCH-->
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-    <script type="text/javascript" src="/ta_pariwisata/assets/js/jquery.backstretch.min.js"></script>
+    <script type="text/javascript" src="/Basisdatalanjut/assets/js/jquery.backstretch.min.js"></script>
     <script>
-        $.backstretch("/ta_pariwisata/assets/img/login- .jpg", {speed: 500});
+        $.backstretch("/Basisdatalanjut/assets/img/login- .jpg", {speed: 500});
     </script>
   </body>
 <!-- Mirrored from demo.gridgum.com/templates/AdminDashboard/DashGum/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Apr 2017 13:34:16 GMT -->

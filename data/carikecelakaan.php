@@ -1,6 +1,6 @@
 
 <?php
-include ($_SERVER['DOCUMENT_ROOT']."/ta_pariwisata/value/location.php");
+include ($_SERVER['DOCUMENT_ROOT']."/Basisdatalanjut/value/location.php");
 require $action.'/connect.php';
 
 // $cari_nama = $_GET["cari_nama"];

@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/ta_pariwisata/value/location.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Basisdatalanjut/value/location.php';
 include ($action.'/connect.php');
 session_start();
 if(isset($_POST['username'])){
@@ -19,20 +19,20 @@ if(isset($_POST['username'])){
 		if($dt['role']=='SA'){
 			$_SESSION['SA'] = true;
 			$_SESSION['status'] = 'success';
-			header("Location:/ta_pariwisata/admin");
+			header("Location:/Basisdatalanjut/admin");
 		}
 		
 		if($dt['role']=='A'){
 			$_SESSION['A'] = true;
 //			$_SESSION['username'] = $dt['username'];
 			
-			?><script language="JavaScript">document.location='/ta_pariwisata/layout/user'</script><?php
+			?><script language="JavaScript">document.location='/Basisdatalanjut/layout/user'</script><?php
 		}
 		$result = pg_query("update administrators set last_login = now() where username='$username'");		
 	}else{
 		echo "<script>
 		alert (' Login Failed, Please Fill Your Username and Password Correctly !');
-		eval(\"parent.location='/ta_pariwisata/layout/login.php '\");	
+		eval(\"parent.location='/Basisdatalanjut/layout/login.php '\");	
 		</script>";
 	}
 }

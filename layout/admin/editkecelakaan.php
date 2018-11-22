@@ -1,5 +1,5 @@
 <!--MAP-->
-<h3><i class="fa fa-angle-right"></i> Edit SPA Infomation</h3>
+<h3><i class="fa fa-angle-right"></i> Edit Kecelakaan Infomation</h3>
 <div class="row mt">
             <div class="col-lg-6">
                 <section class="panel">
@@ -14,7 +14,7 @@
                     <div class="panel-body">
                         <div id="map" style="width:100%;height:420px; z-index:50"></div>
                     </div>
-                </section>
+                </section>`
             </div>
             <!--/MAP-->
 
@@ -50,7 +50,7 @@
                                         <div class="col-md-9">
                                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                                 <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                                    <img src="/ta_pariwisata/assets/img/spa/<?php echo $data['id']; ?>/no.png"" alt="" />
+                                                    <img src="/Basisdatalanjut/assets/img/spa/<?php echo $data['id']; ?>/no.png"" alt="" />
                                                 </div>
                                                 <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                                 <div>
@@ -75,4 +75,4 @@
                 </section>
             </div>
 </div>
-<script src="/ta_pariwisata/action/admin/mapupd.js" type="text/javascript"></script>
+<script src="/Basisdatalanjut/action/admin/mapupd.js" type="text/javascript"></script>

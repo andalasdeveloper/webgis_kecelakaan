@@ -1,4 +1,4 @@
-<?php include 'template/base.php' ?>
+6766666666666<?php include 'template/base.php' ?>
 <?php startblock('title') ?>DASHBOARD<?php endblock() ?>
 <?php startblock('css') ?>
   <style type="text/css">

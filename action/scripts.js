@@ -1,6 +1,6 @@
 var pos ='null';
 var circles=[];
-var server = "http://localhost/ta_pariwisata/";
+var server = "http://localhost/Basisdatalanjut/";
 var markers = [];
 var markersDua = [];
 var infoDua = [];
@@ -19,7 +19,7 @@ window.onload = function() {
   //kecamatanTampil();
 };
 
-function kecelakaaan() //tampil digitasi spa
+function kecelakaan() //tampil digitasi spa
 {
     kecelakaan = new google.maps.Data();
     kecelakaan.loadGeoJson(server+'data/kecelakaan.php');
@@ -256,7 +256,7 @@ function cari_kecelakaan(rows){
     centerBaru = new google.maps.LatLng(latitude, longitude);
     marker = new google.maps.Marker({
       position: centerBaru,
-      icon:'/ta_pariwisata/assets/ico/massage-therapy.png',
+      icon:'/Basisdatalanjut/assets/ico/massage-therapy.png',
       map: map,
       animation: google.maps.Animation.DROP,
     });
@@ -302,7 +302,7 @@ function detailmes_infow(id){  //menampilkan informasi masjid
         centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
         marker = new google.maps.Marker({
           position: centerBaru,
-          icon:'/ta_pariwisata/assets/ico/massage-therapy.png',
+          icon:'/Basisdatalanjut/assets/ico/massage-therapy.png',
           map: map,
           animation: google.maps.Animation.DROP,
         });
@@ -370,7 +370,7 @@ function detailkecelakaan(id1){  //menampilkan informasi kecelakaan
         centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
         marker = new google.maps.Marker({
           position: centerBaru,
-          icon:'/ta_pariwisata/assets/ico/massage-therapy.png',
+          icon:'/Basisdatalanjut/assets/ico/massage-therapy.png',
           map: map,
           animation: google.maps.Animation.DROP,
         });
@@ -381,7 +381,7 @@ function detailkecelakaan(id1){  //menampilkan informasi kecelakaan
         map.setCenter(centerBaru);
         map.setZoom(18); 
 
-        $('#info').append("<tr><td><b>No Laporan</b></td><td>:</td><td> "+id1+"</td></tr><tr><td><b>Keterangan Lokasi </b></td><td>:</td><td> "+alamat+"</td></tr><tr><td><b>total_kerugian</b></td><td>:</td><td> "+nama+" </sup></td></tr><tr><td><a class='btn btn-default' role=button' data-toggle='collapse' href='#terdekat1' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+nama+"\")' title='Nearby' aria-controls='Nearby'><i class='fa fa-compass' style='color:black;''></i><label>&nbsp Attraction Nearby</label></a><div class='collapse' id='terdekat1'><div class='well' style='width: 150%'><div class='checkbox'><label><input id='check_t' type='checkbox'>Tourism</label></div><div class='checkbox'><label><input id='check_i' type='checkbox'>Small Industry</label></div><div class='checkbox'><label><input id='check_oo' type='checkbox' value=''>Souvenir</label></div><div class='checkbox'><label><input id='check_k' type='checkbox' value=''>Culinary</label></div><div class='checkbox'><label><input id='check_h' type='checkbox' value='5'>Hotel</label></div><div class='checkbox'><label><input id='check_r' type='checkbox' value=''>Restaurant</label></div><label><b>Radius&nbsp</b></label><label style='color:black' id='km1'><b>0</b></label>&nbsp<label><b>m</b></label><br><input type='range' onchange='cek1();aktifkanRadiusSekitar();resultt1();info1();' id='inputradius1' name='inputradius1' data-highlight='true' min='1' max='15' value='1' ></div></div></td></tr>")
+        $('#info').append("<tr><td><b>No Laporan</b></td><td>:</td><td> "+id1+"</td></tr><tr><td><b>Keterangan Lokasi </b></td><td>:</td><td> "+alamat+"</td></tr><tr><td><b>total_kerugian</b></td><td>:</td><td> "+nama+" </sup></td></tr><tr><td><a class='btn btn-default' role=button' data-toggle='collapse' href='#terdekat1' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+nama+"\")' title='Nearby' aria-controls='Nearby'><i class='fa fa-compass' style='color:black;''></i><label>&nbsp Attraction Nearby</label></a><div class='collapse' id='terdekat1'><div class='well' style='width: 150%'><div class='checkbox'><label><input id='check_t' type='checkbox'>Rumah Sakit</label></div><div class='checkbox'><label><input id='check_i' type='checkbox'>Pos Polisi</label></div><label><b>Radius&nbsp</b></label><label style='color:black' id='km1'><b>0</b></label>&nbsp<label><b>m</b></label><br><input type='range' onchange='cek1();aktifkanRadiusSekitar();resultt1();info1();' id='inputradius1' name='inputradius1' data-highlight='true' min='1' max='15' value='1' ></div></div></td></tr>")
         infowindow = new google.maps.InfoWindow({
           position: centerBaru,
           content: "<span style=color:black><center><b>Information</b><br><img src='"+fotosrc+image+"' al='image in infowindow' width='150'></center><br><i class='fa fa-home'></i> "+nama+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br><a role='button' title='tracking' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
@@ -538,7 +538,7 @@ function owsekitar(latitude,longitude,rad){ // OW SEKITAR MASJID
         centerBaru = new google.maps.LatLng(lat, lon);
         marker = new google.maps.Marker({
           position: centerBaru,
-          icon:'/ta_pariwisata/assets/ico/marker_tw.png',
+          icon:'/Basisdatalanjut/assets/ico/marker_tw.png',
           map: map,
           animation: google.maps.Animation.DROP,
         });
@@ -605,7 +605,7 @@ function tampil_sekitar(latitude,longitude,nama){
   // POSISI MARKER
   centerBaru = new google.maps.LatLng(latitude, longitude);
   var marker = new google.maps.Marker({map: map, position: centerBaru, 
-  icon:'/ta_pariwisata/assets/ico/massage-therapy.png',
+  icon:'/Basisdatalanjut/assets/ico/massage-therapy.png',
   animation: google.maps.Animation.DROP,
   clickable: true});                       
 }
@@ -683,7 +683,7 @@ function detailik(id1){  //menampilkan Information
         centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
         marker = new google.maps.Marker({
           position: centerBaru,
-          icon:'/ta_pariwisata/assets/ico/industries.png',
+          icon:'/Basisdatalanjut/assets/ico/industries.png',
           map: map,
           animation: google.maps.Animation.DROP,
         });

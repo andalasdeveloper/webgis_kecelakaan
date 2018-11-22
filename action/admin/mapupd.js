@@ -53,7 +53,7 @@ function initialize(){
   }
   //menampilkan digitasi bengkel
   mesjid_dig = new google.maps.Data();
-  mesjid_dig.loadGeoJson('/ta_pariwisata/data/spa.php?id='+id.value);
+  mesjid_dig.loadGeoJson('/Basisdatalanjut/data/spa.php?id='+id.value);
   mesjid_dig.setMap(map);
   mesjid_dig.setStyle({
       fillColor: 'red',
