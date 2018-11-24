@@ -94,8 +94,8 @@
                           <span>Search By</span>
                       </a>
                       <ul class="sub">
-                          <li><a href="#"><i class="fa fa-circle"></i>Car Accident</a></li>
-                          <li><a href="#"><i class="fa fa-circle"></i>Motorcycle Accident</a></li>
+                          <li><a href="javascript:;" onclick="kecelakaan_mobil();resultt()"><i class="fa fa-circle"></i>Car Accident</a></li>
+                          <li><a href="javascript:;" onclick="kecelakaan_motor();resultt()"><i class="fa fa-circle"></i>Motorcycle Accident</a></li>
                       </ul>
                   </li>
                   

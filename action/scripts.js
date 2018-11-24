@@ -235,10 +235,25 @@ function resultt(){
   $("#infoo1").hide();
   $("#att2").hide();
   $("#infoev").hide(); 
+  $('#info').empty();
+  $('#infocieklai').empty();
+  $('#infocieklai1').empty();
 }
 
 function tampilsemua(){ //menampilkan semua 
   $.ajax({ url: server+'data/carikecelakaan.php', data: "", dataType: 'json', success: function (rows){
+    cari_kecelakaan(rows);
+  }});
+}
+
+function kecelakaan_mobil(){ //menampilkan 
+  $.ajax({ url: server+'data/kecelakaan_mobil.php', data: "", dataType: 'json', success: function (rows){
+    cari_kecelakaan(rows);
+  }});
+}
+
+function kecelakaan_motor(){ //menampilkan 
+  $.ajax({ url: server+'data/kecelakaan_motor.php', data: "", dataType: 'json', success: function (rows){
     cari_kecelakaan(rows);
   }});
 }

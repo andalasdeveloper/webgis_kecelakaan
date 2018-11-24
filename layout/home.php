@@ -131,19 +131,7 @@
     </section>
   </div>
 
-  <div class="col-sm-8" style="display:none;" id="att1">  
-    <section class="panel">
-      <div class="panel-body" >
-        <a class="btn btn-compose">Attraction Around Mosque</a>
-        <div class="box-body" style="max-height:350px;overflow:auto;">
-          <div class="form-group">
-            <table class="table table-bordered" id='info1'>
-            </table>   
-          </div>                  
-        </div>
-      </div>
-    </section>
-  </div>
+
     
   <div class="col-sm-4" style="display:none;" id="att2">
     <section class="panel">
