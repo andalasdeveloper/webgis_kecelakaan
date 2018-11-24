@@ -115,7 +115,7 @@
                           <input type="text"  class="form-text" placeholder="...." id="nama_korban" name="nama_korban" required>
                             <span class="bar"></span> 
                         </div>         
-                       <button type="submit" class="btn btn-info btn-block btn-flat" id="kul_button" value="nama_korban" onclick='find_korban();'>Search</button>
+                       <button type="submit" class="btn btn-info btn-block btn-flat" id="kul_button" value="nama_korban" onclick='find_korban();resultt()'>Search</button>
                      </div> 
                      </div> 
                     </li>
