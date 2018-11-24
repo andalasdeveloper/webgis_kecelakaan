@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include $_SERVER['DOCUMENT_ROOT']."/ta_pariwisata/value/location.php";
+    include $_SERVER['DOCUMENT_ROOT']."/Basisdatalanjut/value/location.php";
     include $action."/connect.php";
 	$nama = $_POST['nama'];
 	$alamat = $_POST['alamat'];

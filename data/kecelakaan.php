@@ -1,5 +1,5 @@
 <?php
-include ($_SERVER['DOCUMENT_ROOT']."/ta_pariwisata/value/location.php");
+include ($_SERVER['DOCUMENT_ROOT']."/Basisdatalanjut/value/location.php");
 require $action.'/connect.php';
 
 $querysearch="	SELECT row_to_json(fc) 

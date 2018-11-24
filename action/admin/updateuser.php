@@ -1,11 +1,10 @@
 <?php
 session_start();
-include ($_SERVER['DOCUMENT_ROOT']."/ta_pariwisata/value/location.php");
+include ($_SERVER['DOCUMENT_ROOT']."/Basisdatalanjut/value/location.php");
 include ($action.'/connect.php');
 
 $id = $_POST['id'];
-$id_spa = $_POST['id_spa'];
-$nama_user = $_POST['nama_user'];
+$name = $_POST['nama_user'];
 $password = $_POST['password'];
 $pass = md5(md5($password));
 $role = $_POST['role'];
@@ -13,7 +12,7 @@ $no_hp = $_POST['no_hp'];
 $$alamat = $_POST['alamat'];
 $username = $_POST['username'];
 
-$sql  = "UPDATE spa_user SET id_spa='$id_spa', name='$nama_user', password='$pass', role='$role', hp='$no_hp', address='$alamat', username='$username' WHERE id='$id'";
+$sql  = "UPDATE user_polisi SET  name='$nama_user', password='$pass', role='$role', hp='$no_hp', address='$alamat', username='$username' WHERE id='$id'";
 $update = pg_query($sql);
 
 if ($update){

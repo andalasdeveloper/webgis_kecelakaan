@@ -1,6 +1,6 @@
 <?php
 //include '../template/admin-base.php';
-include $_SERVER['DOCUMENT_ROOT'].'/ta_pariwisata/value/location.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Basisdatalanjut/value/location.php';
 include $layout.'/template/admin-base.php';
 ?>
 <?php startblock('title') ?>DASHBOARD<?php endblock() ?>
@@ -19,7 +19,7 @@ include $layout.'/template/admin-base.php';
             <div class="row">
                 <div class="col-lg-9 main-chart">
                     <div class="row mtbox">
-                        <a href="?page=listspa">
+                        <a href="?page=listkecelakaan">
                             <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                                 <div class="box1">
                                     <span class="li_shop"></span>
@@ -48,7 +48,7 @@ include $layout.'/template/admin-base.php';
         ?>
 <?php endblock() ?>
 <?php startblock('js') ?>
-    <script src="/ta_pariwisata/assets/js/lightslider.js"></script>
+    <script src="/Basisdatalanjut/assets/js/lightslider.js"></script>
     <script>
     $(document).ready(function() {
         $("#content-slider").lightSlider({

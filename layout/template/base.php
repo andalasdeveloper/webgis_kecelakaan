@@ -11,18 +11,18 @@
     <title>ACCIDENT | <?php startblock('title') ?><?php endblock() ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/ta_pariwisata/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/Basisdatalanjut/assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
-    <link href="/ta_pariwisata/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <!-- <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/css/zabuto_calendar.css"> -->
-    <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/js/gritter/css/jquery.gritter.css" />
-    <link rel="stylesheet" type="text/css" href="/ta_pariwisata/assets/lineicons/style.css">
+    <link href="/Basisdatalanjut/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" type="text/css" href="/Basisdatalanjut/assets/css/zabuto_calendar.css"> -->
+    <link rel="stylesheet" type="text/css" href="/Basisdatalanjut/assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="/Basisdatalanjut/assets/lineicons/style.css">
     
     <!-- Custom styles for this template -->
-    <link href="/ta_pariwisata/assets/css/style.css" rel="stylesheet">
-    <link href="/ta_pariwisata/assets/css/style-responsive.css" rel="stylesheet">
+    <link href="/Basisdatalanjut/assets/css/style.css" rel="stylesheet">
+    <link href="/Basisdatalanjut/assets/css/style-responsive.css" rel="stylesheet">
 
-    <script src="/ta_pariwisata/assets/js/chart-master/Chart.js"></script>
+    <script src="/Basisdatalanjut/assets/js/chart-master/Chart.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNnzxae2AewMUN0Tt_fC3gN38goeLVdVE"></script>
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -56,8 +56,30 @@
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
-                  <p class="centered"><!--<a href="profile.html">--><img style="background-color: #E0FF84" src="/ta_pariwisata/assets/img/avatar/guest.png" class="img-circle" width="60"><!--</a>--></p>
+                  <p class="centered"><!--<a href="profile.html">--><img style="background-color: #E0FF84" src="/Basisdatalanjut/assets/img/avatar/guest.png" class="img-circle" width="60"><!--</a>--></p>
                   <h5 class="centered">guest</h5>
+
+                  <li class="sub-menu">
+                    <a class="" href="javascript:;">
+                        <i class="fa fa-thumb-tack"></i>
+                        <span>Accident By Radius</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <div class=" form-group" style="color: white;"> <br>
+                          <label for="inputradiuss">Radius : </label>
+                          <label  id="nilai">0</label> m
+                          <script>
+                            function cekkk()
+                            {
+                              document.getElementById('nilai').innerHTML=
+                              document.getElementById('inputradiuss').value*100
+                            }
+                          </script>
+                          <input  type="range" onchange="cekkk();aktifkanRadiuss()" id="inputradiuss" 
+                                  name="inputradiuss" data-highlight="true" min="0" max="20" value="0" >
+                        </div>
+                      </ul>
+                  </li>
 
                   <li class="sub-menu">
                     <a class="" href="javascript:;" onclick="tampilsemua();resultt()">
@@ -104,24 +126,24 @@
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="/ta_pariwisata/assets/js/jquery.js"></script>
-    <script src="/ta_pariwisata/action/scripts.js" type="text/javascript"></script>
-    <script src="/ta_pariwisata/assets/js/jquery-1.8.3.min.js"></script>
-    <script src="/ta_pariwisata/assets/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="/ta_pariwisata/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="/ta_pariwisata/assets/js/jquery.scrollTo.min.js"></script>
-    <script src="/ta_pariwisata/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="/ta_pariwisata/assets/js/jquery.sparkline.js"></script>
+    <script src="/Basisdatalanjut/assets/js/jquery.js"></script>
+    <script src="/Basisdatalanjut/action/scripts.js" type="text/javascript"></script>
+    <script src="/Basisdatalanjut/assets/js/jquery-1.8.3.min.js"></script>
+    <script src="/Basisdatalanjut/assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="/Basisdatalanjut/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="/Basisdatalanjut/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="/Basisdatalanjut/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="/Basisdatalanjut/assets/js/jquery.sparkline.js"></script>
 
 
     <!--common script for all pages-->
-    <script src="/ta_pariwisata/assets/js/common-scripts.js"></script>
+    <script src="/Basisdatalanjut/assets/js/common-scripts.js"></script>
     
-    <script type="text/javascript" src="/ta_pariwisata/assets/js/gritter/js/jquery.gritter.js"></script>
-    <script type="text/javascript" src="/ta_pariwisata/assets/js/gritter-conf.js"></script>
+    <script type="text/javascript" src="/Basisdatalanjut/assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="/Basisdatalanjut/assets/js/gritter-conf.js"></script>
 
     <!--script for this page-->
-    <script src="/ta_pariwisata/assets/js/sparkline-chart.js"></script>    
+    <script src="/Basisdatalanjut/assets/js/sparkline-chart.js"></script>    
    
     <?php startblock('js') ?> <?php endblock() ?>
   </body>

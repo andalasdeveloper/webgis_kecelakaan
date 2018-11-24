@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/ta_pariwisata/value/location.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Basisdatalanjut/value/location.php';
 include ($action.'/connect.php');
 
 //	$sql = "SELECT(SELECT COUNT(*) from worship_place WHERE id_category=1) AS masjid, (SELECT COUNT(*) FROM worship_place WHERE id_category=2) AS mushalla";
