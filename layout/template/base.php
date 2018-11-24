@@ -60,7 +60,7 @@
                   <h5 class="centered">guest</h5>
 
                   <li class="sub-menu">
-                    <a class="" href="javascript:;" onclick="tampilsemua();resultt()">
+                    <a class="" href="javascript:;">
                         <i class="fa fa-thumb-tack"></i>
                         <span>Accident By Radius</span>
                     </a>
@@ -68,6 +68,13 @@
                         <div class=" form-group" style="color: white;"> <br>
                           <label for="inputradiuss">Radius : </label>
                           <label  id="nilai">0</label> m
+                          <script>
+                            function cekkk()
+                            {
+                              document.getElementById('nilai').innerHTML=
+                              document.getElementById('inputradiuss').value*100
+                            }
+                          </script>
                           <input  type="range" onchange="cekkk();aktifkanRadiuss()" id="inputradiuss" 
                                   name="inputradiuss" data-highlight="true" min="0" max="20" value="0" >
                         </div>

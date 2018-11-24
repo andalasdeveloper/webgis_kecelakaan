@@ -1,5 +1,6 @@
 var pos ='null';
 var circles=[];
+var koordinat = 'null';
 var server = "http://localhost/Basisdatalanjut/";
 var markers = [];
 var markersDua = [];
@@ -190,6 +191,8 @@ function manualLocation(){ //posisi manual
   alert('Click the map');
   map.addListener('click', function(event){
     addMarker(event.latLng);
+    
+
   });
 }
 
@@ -343,16 +346,12 @@ function clearroute(){
   rute=[]; 
 }
 
-function cekkk()
-      {
-        document.getElementById('nilai').innerHTML=
-        document.getElementById('inputradiuss').value*100
-      }
+
 
 //Fungsi Aktifkan Radius
 function aktifkanRadiuss()
 {
-  if (koordinat == 'null')
+  if (pos == 'null')
   {
     alert ('Click the Button of Your Position Beforehand');
   }
@@ -362,7 +361,7 @@ function aktifkanRadiuss()
     var inputradiuss=document.getElementById("inputradiuss").value;
     var circle = new google.maps.Circle
     ({
-      center: koordinat,
+      center: pos,
       radius: parseFloat(inputradiuss*100),      
       map: map,
       strokeColor: "blue",
@@ -372,7 +371,7 @@ function aktifkanRadiuss()
       fillOpacity: 0.35
     });        
     map.setZoom(12);       
-    map.setCenter(koordinat);
+    map.setCenter(pos);
     circles.push(circle);     
   }
   cekRadiusStatus = 'on';
@@ -391,7 +390,7 @@ function tampilradiuss()
   $('#hasilcari').append("<thead><th>Name</th><th colspan='2'>Action</th></thead>");
   $.ajax
   ({ 
-    url: server+'culradius.php?lat='+koordinat.lat+'&lng='+koordinat.lng+'&rad='+rad, data: "", dataType: 'json', success: function(rows)
+    url: server+'data/kecelakaanradius.php?lat='+pos.lat+'&lng='+pos.lng+'&rad='+rad, data: "", dataType: 'json', success: function(rows)
     { 
       for (var i in rows) 
       {   
@@ -406,7 +405,7 @@ function tampilradiuss()
         ({
           position: centerBaru,
           map: map,
-          icon: "assets/img/cul.png",
+          icon: "assets/img/aaa.png",
         });
         markersDua.push(marker);
         map.setCenter(centerBaru);
@@ -415,12 +414,30 @@ function tampilradiuss()
         console.log(longitude);
         console.log(rad);
         clickMarker(centerBaru, id);
-        $('#hasilcari').append("<tr><td>"+name+"</td><td><a role='button' class='btn btn-success' onclick='detculi(\""+id+"\");detailinfokul(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='kulAngkot(\""+id+"\")'></a></td></tr>");     
+        $('#hasilcari1').append("<tr><td>"+id+"</td><td><a role='button' class='btn btn-success' onclick='detailkecelakaan(\""+id+"\");'>Info</a></td></tr>");     
        }
        $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>"+rows.length);
     }
 
   });   
+}
+
+function clickMarker(centerBaru, id)
+{
+  
+  var marker = new google.maps.Marker
+    ({
+      icon: "assets/ico/aaa.png",
+      position: centerBaru,
+      map: map
+    });
+    markersDua.push(marker);
+    
+    google.maps.event.addListener(marker, "click", function(){
+        detailmes_infow(id);
+       
+      });
+
 }
 
 
@@ -714,7 +731,7 @@ function kecelakaanradius(){ //menampilkan kecelakaan berdasarkan radius
       console.log(pos.lng);
 
         $.ajax({ 
-        url: server+'kacelakaanradius.php?lat='+pos.lat+'&lng='+pos.lng+'&rad='+rad, data: "", dataType: 'json', success: function(rows)
+        url: server+'data/kecelakaanradius.php?lat='+pos.lat+'&lng='+pos.lng+'&rad='+rad, data: "", dataType: 'json', success: function(rows)
         {
             console.log("hy");
             for (var i in rows) 
@@ -728,7 +745,7 @@ function kecelakaanradius(){ //menampilkan kecelakaan berdasarkan radius
               marker = new google.maps.Marker
             ({
               position: centerBaru,
-              icon:'assets/ico/marker_masjid.png',
+              icon:'assets/ico/aaa.png',
               map: map,
               animation: google.maps.Animation.DROP,
             });
@@ -738,7 +755,7 @@ function kecelakaanradius(){ //menampilkan kecelakaan berdasarkan radius
               map.setCenter(centerBaru);
         klikInfoWindow(id);
               map.setZoom(14);
-              $('#hasilcari').append("<tr><td>"+nama+"</td><td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailmasjid(\""+id+"\");info1();'></a></td><td><a role='button' class='btn btn-default fa fa-bus' title='jalur angkot' onclick='angkotmesjid(\""+id+"\",\""+latitude+"\",\""+longitude+"\");info12();'></a></td></tr>");
+              $('#hasilcari').append("<tr><td>"+nama+"</td><td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailkecelakaan(\""+id+"\");info1();'></a></td><td><a role='button' class='btn btn-default fa fa-bus' title='jalur angkot' onclick='angkotmesjid(\""+id+"\",\""+latitude+"\",\""+longitude+"\");info12();'></a></td></tr>");
             } 
             }    
           });

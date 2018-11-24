@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/ta_pariwisata/value/location.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Basisdatalanjut/value/location.php';
 ?>
 <h3><i class="fa fa-angle-right"></i> Edit User</h3>
 <div class="col-sm-12">
@@ -13,7 +13,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/ta_pariwisata/value/location.php';
                     $sql = pg_query("SELECT * FROM user_polisi where id='$id'");
                     $data = pg_fetch_array($sql)
                     ?>
-                    <form class="form-horizontal style-form" role="form" action="/ta_pariwisata/action/admin/updateuser.php" method="post">
+                    <form class="form-horizontal style-form" role="form" action="/Basisdatalanjut/action/admin/updateuser.php" method="post">
                         <input type="text" class="form-control hidden" id="id" name="id" value="<?php echo $data['id']?>">
                         <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label" for="nama_user">Name</label>

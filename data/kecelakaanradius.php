@@ -8,7 +8,7 @@ $rad=$_GET["rad"];
 $querysearch = "SELECT id_kecelakaan, total_kerugian,st_x(st_centroid(geom)) AS lon,st_y(st_centroid(geom)) AS lat,
 	st_distance_sphere(ST_GeomFromText('POINT(".$longi." ".$latit.")',-1), kecelakaan.geom) AS jarak 
 	FROM kecelakaan WHERE st_distance_sphere(ST_GeomFromText('POINT(".$longi." ".$latit.")',-1),
-	spa.geom) <= ".$rad." ORDER BY jarak";
+	kecelakaan.geom) <= ".$rad." ORDER BY jarak";
 
 $hasil=pg_query($querysearch);
 while($row = pg_fetch_array($hasil))
