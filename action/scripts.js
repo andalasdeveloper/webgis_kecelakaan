@@ -376,6 +376,8 @@ function aktifkanRadiuss()
   }
   cekRadiusStatus = 'on';
   tampilradiuss();
+  kecelakaanradius();
+
 }
 
 function cekRadiuss()
@@ -386,6 +388,7 @@ function cekRadiuss()
 function tampilradiuss()
 {
   //hapusawal1();
+  console.log("tampilradiuss")
   cekRadiuss();
   $('#hasilcari').append("<thead><th>Name</th><th colspan='2'>Action</th></thead>");
   $.ajax
@@ -414,9 +417,9 @@ function tampilradiuss()
         console.log(longitude);
         console.log(rad);
         clickMarker(centerBaru, id);
-        $('#hasilcari1').append("<tr><td>"+id+"</td><td><a role='button' class='btn btn-success' onclick='detailkecelakaan(\""+id+"\");'>Info</a></td></tr>");     
+      //  $('#hasilcari1').append("<tr><td>"+id+"</td><td><a role='button' class='btn btn-success' onclick='detailkecelakaan(\""+id+"\");'>Info</a></td></tr>");     
        }
-       $('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>"+rows.length);
+       
     }
 
   });   
@@ -563,7 +566,7 @@ function info1(){
   $("#infoev").hide();   
 }
 
-function aktifkanRadiusSekitar(){
+function aktifkanRadiussekitar(){
   console.log("FUNGSI aktifkanRadiusSekitar()");
   hapusRadius();
   hapusMarkerTerdekat();
@@ -755,7 +758,7 @@ function kecelakaanradius(){ //menampilkan kecelakaan berdasarkan radius
               map.setCenter(centerBaru);
         klikInfoWindow(id);
               map.setZoom(14);
-              $('#hasilcari').append("<tr><td>"+nama+"</td><td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailkecelakaan(\""+id+"\");info1();'></a></td><td><a role='button' class='btn btn-default fa fa-bus' title='jalur angkot' onclick='angkotmesjid(\""+id+"\",\""+latitude+"\",\""+longitude+"\");info12();'></a></td></tr>");
+              $('#hasilcari').append("<tr><td>"+nama+"</td><td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailkecelakaan(\""+id+"\");info1();'></a></td></tr>");
             } 
             }    
           });
