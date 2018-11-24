@@ -143,7 +143,16 @@
             <div class="form-group">
               <table class="table" id='info'>
                 <tbody  style='vertical-align:top;'>
+                  
                 </tbody> 
+              </table>
+              <a class="btn btn-compose">Korban</a>
+              <table class="table" id='infocieklai'>
+                
+              </table>
+              <a class="btn btn-compose">Kendaraan</a>
+              <table class="table" id='infocieklai1'>
+                
               </table>
             </div> 
           </div>
@@ -155,10 +164,10 @@
     <div class="col-sm-8" style="display:none;" id="infoev">
       <section class="panel">
         <div class="panel-body">
-          <a class="btn btn-compose">Information of Event</a>
+          <a class="btn btn-compose">Informasi Korban</a>
           <div class="box-body" style="max-height:350px;overflow:auto;">
             <div class="form-group">
-              <table class="table" id='infoevent'>
+              <table class="table" id='infokorban'>
                 <tbody  style='vertical-align:top;'>
                 </tbody> 
               </table>          
