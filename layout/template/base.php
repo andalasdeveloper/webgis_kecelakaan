@@ -91,13 +91,37 @@
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-search"></i>
-                          <span>Search By</span>
+                          <span>Accident By Detail</span>
                       </a>
                       <ul class="sub">
                           <li><a href="javascript:;" onclick="kecelakaan_mobil();resultt()"><i class="fa fa-circle"></i>Car Accident</a></li>
                           <li><a href="javascript:;" onclick="kecelakaan_motor();resultt()"><i class="fa fa-circle"></i>Motorcycle Accident</a></li>
                       </ul>
+
+
                   </li>
+
+                  <li class="sub-menu">
+                <a href="javascript:;" >
+                  <i class="fa fa-search"></i>
+                  <span>Name Victim</span>
+                </a>
+                <ul class="sub">
+                  <div class=" form-group">
+                    <li>
+                      <div class="search">
+                        <div class="col-md-15 padding-0 text-center">
+                         <div class="form-group form-animate-text"><br>
+                          <input type="text"  class="form-text" placeholder="...." id="nama_korban" name="nama_korban" required>
+                            <span class="bar"></span> 
+                        </div>         
+                       <button type="submit" class="btn btn-info btn-block btn-flat" id="kul_button" value="nama_korban" onclick='find_korban();'>Search</button>
+                     </div> 
+                     </div> 
+                    </li>
+                  </div>         
+                </ul>
+                </li>
                   
               </ul>
               <!-- sidebar menu end-->

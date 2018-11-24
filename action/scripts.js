@@ -14,6 +14,7 @@ var pos ='null';
 var jalurAngkot=[];
 var centerLokasi; //untuk fungsi CallRoute()
 
+
 window.onload = function() {
   basemap();
   kecelakaan();
@@ -253,9 +254,42 @@ function kecelakaan_mobil(){ //menampilkan
 }
 
 function kecelakaan_motor(){ //menampilkan 
-  $.ajax({ url: server+'data/kecelakaan_motor.php', data: "", dataType: 'json', success: function (rows){
+  $.ajax({ url: server+'data/find_kecelakaan.php', data: "", dataType: 'json', success: function (rows){
     cari_kecelakaan(rows);
   }});
+}
+
+function find_korban(){  
+  if(nama_korban=='')
+  {
+    alert("Isi kolom pencarian terlebih dahulu !");
+  }
+  else
+  {
+    $('#hasilcari').append("<thead><th>Name</th><th colspan='3'>Action</th></thead>");
+    var nama_korban = document.getElementById('nama_korban').value;
+
+    $.ajax
+    ({ 
+      url: server+'data/find_korban.php?cari_nama='+nama_korban, data: "", dataType: 'json', success: function(rows)
+      { 
+        if(rows==null)
+        {
+          alert('Data Did Not Exist !');
+        }
+        for (var i in rows)
+        {   
+          var row     = rows[i];
+          var id  = row.id;
+          console.log(id);
+         // $('#hasilcari').append("<tr><td>"+name+"</td><td><a role='button' class='btn btn-success' onclick='detculi(\""+id+"\");detailinfokul(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='kulAngkot(\""+id+"\")'></a></td></tr>");
+        }   
+        detailmes_infow(id);
+        //$('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>"+rows.length);
+      }
+
+    }); 
+  }
 }
 
 function cari_kecelakaan(rows){ 
