@@ -254,7 +254,7 @@ function kecelakaan_mobil(){ //menampilkan
 }
 
 function kecelakaan_motor(){ //menampilkan 
-  $.ajax({ url: server+'data/find_kecelakaan.php', data: "", dataType: 'json', success: function (rows){
+  $.ajax({ url: server+'data/kecelakaan_motor.php', data: "", dataType: 'json', success: function (rows){
     cari_kecelakaan(rows);
   }});
 }

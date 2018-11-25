@@ -74,6 +74,20 @@ if(!isset($_SESSION['SA'])){
                             <span>Lists Accident</span>
                         </a>
                     </li>
+
+                    <li class="sub-menu">
+                        <a href="?page=listkorban">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Lists Victim</span>
+                        </a>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="?page=listkendaraan">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Lists Kendaraan</span>
+                        </a>
+                    </li>
                     
                     <li class="sub-menu">
                         <a href="/Basisdatalanjut/home">
