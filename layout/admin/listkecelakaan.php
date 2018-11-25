@@ -10,7 +10,7 @@
                             <th>ID Kecelakaan</th>
                             <th>Total Kerugian</th>
                             <th>Keterangan Lokasi</th>
-                            <th>Tanggal Kejadian</th>
+                            
     
                             <th>Option</th>
                         </thead>
@@ -26,7 +26,7 @@
                                     <td><?php echo "$id"; ?></td>
                                     <td><?php echo "$nama"; ?></td>
                                     <td><?php echo "$alamat"; ?></td>
-                                    <td>sdf</td>
+                                
                                     <td><div class="btn-group">
                                             <a href="?page=detail&id=<?php echo $id; ?>" class="btn btn-sm btn-default" title='Detail'><i class="fa fa-eye"></i></a>
                                             <a href="?page=editkecelakaan%id=<?php echo $id;?>" class="btn btn-sm btn-default" title='Edit'><i class="fa fa-edit"></i></a>

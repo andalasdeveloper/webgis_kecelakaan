@@ -18,7 +18,7 @@ var centerLokasi; //untuk fungsi CallRoute()
 window.onload = function() {
   basemap();
   kecelakaan();
-  //kecamatanTampil();
+  kecamatanTampil();
 };
 
 function kecelakaan() //tampil digitasi 
@@ -86,42 +86,24 @@ function hapusRadius(){
   cekRadiusStatus = 'off';
 }
 
-// function kecamatanTampil(){
-//   kecamatan = new google.maps.Data();
-//   kecamatan.loadGeoJson(server+'data/kecamatan.php');
-//   kecamatan.setStyle(function(feature){
-//     var gid = feature.getProperty('id');
-//     if (gid == 'K001'){
-//       color = '#ff3300' 
-//       return({
-//         fillColor:color,
-//         strokeWeight:2.0,
-//         strokeColor:'black',
-//         fillOpacity:0.3,
-//         clickable: false
-//       }); 
-//     }
-//     else if(gid == 'K002'){ color = '#ffd777' 
-//       return({
-//       fillColor:color,
-//         strokeWeight:2.0,
-//         strokeColor:'black',
-//         fillOpacity:0.3,
-//         clickable: false
-//       });
-//     }
-//     else if(gid == 'K003'){ color = '#ec87ec' 
-//       return({
-//       fillColor:color,
-//         strokeWeight:2.0,
-//         strokeColor:'black',
-//         fillOpacity:0.3,
-//         clickable: false
-//       });
-//     }         
-//   });
-//   kecamatan.setMap(map);
-// }
+function kecamatanTampil(){
+  kecamatan = new google.maps.Data();
+  kecamatan.loadGeoJson(server+'data/kecamatan.php');
+  kecamatan.setStyle(function(feature){
+    var gid = feature.getProperty('id');
+   
+     if(gid == 'K003'){ color = '#ec87ec' 
+      return({
+      fillColor:color,
+        strokeWeight:2.0,
+        strokeColor:'black',
+        fillOpacity:0.3,
+        clickable: false
+      });
+    }         
+  });
+  kecamatan.setMap(map);
+}
 
 function cek(){
  document.getElementById('km').innerHTML=document.getElementById('inputradiusmes').value*100
@@ -226,7 +208,6 @@ function hapusposisi(){
 
 function resultt(){
   $("#result").show();
-  $("hasilcari1").show()
   $("#resultaround").hide();
   $("#eventt").hide();
   $("#infoo").hide();
@@ -255,7 +236,7 @@ function kecelakaan_mobil(){ //menampilkan
 }
 
 function kecelakaan_motor(){ //menampilkan 
-  $.ajax({ url: server+'data/find_kecelakaan.php', data: "", dataType: 'json', success: function (rows){
+  $.ajax({ url: server+'data/kecelakaan_motor.php', data: "", dataType: 'json', success: function (rows){
     cari_kecelakaan(rows);
   }});
 }
@@ -285,12 +266,9 @@ function find_korban(){
           console.log(id);
          // $('#hasilcari').append("<tr><td>"+name+"</td><td><a role='button' class='btn btn-success' onclick='detculi(\""+id+"\");detailinfokul(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='kulAngkot(\""+id+"\")'></a></td></tr>");
         }   
-      $.ajax({ url: server+'data/detailkecelakaan1.php?cari='+id, data: "", dataType: 'json', success: function (rows){
-      cari_kecelakaan(rows);
-       }});
-
-       
-
+        $.ajax({ url: server+'data/detailkecelakaan1.php?cari='+id, data: "", dataType: 'json', success: function (rows){
+          cari_kecelakaan(rows);
+        }});
         //$('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>"+rows.length);
       }
 
@@ -352,14 +330,14 @@ function detailmes_infow(id){  //menampilkan informasi
   $.ajax({ 
     url: server+'data/detailkecelakaan1.php?cari='+id, data: "", dataType: 'json', success: function(rows){
       console.log("Fungsi Detil kecelakaan : Ketika Marker diklik");
-      //console.log("id_kecelakaan : "+id_kecelakaan);
+      console.log("id_kecelakaan : "+id);
       for (var i in rows) {
         console.log('data ditampilkan');
         var row = rows[i];
         var id = row.id_kecelakaan;
         var nama = row.total_kerugian;
-        var no_laporan = row.no_laporan;
         var alamat=row.$address;
+        var image = row.image;
         var latitude  = row.latitude; 
         var longitude = row.longitude ;
         centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
@@ -369,25 +347,19 @@ function detailmes_infow(id){  //menampilkan informasi
           map: map,
           animation: google.maps.Animation.DROP,
         });
-        console.log(id);
-
-        $('#hasilcari1').append("<tr>"+
-         "<td>"+no_laporan+"</td>"+
-         "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailkecelakaan(\""+id+"\");info1();'></a></td>"+
-         "</tr>");
-     
+        console.log(latitude);
+        console.log(longitude);
         markersDua.push(marker);
         map.setCenter(centerBaru);
         map.setZoom(18); 
         infowindow = new google.maps.InfoWindow({
           position: centerBaru,
-          content: "<span style=color:black><center><b>Information</b><br></center><br><i class='fa fa-info'></i> "+id+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br><a role='button' title='tracking' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();resetangkot();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
+          content: "<span style=color:black><center><b>Information</b><br><img src='"+fotosrc+image+"' alt='image in infowindow' width='150'></center><br><i class='fa fa-info'></i> "+id+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br><a role='button' title='tracking' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();resetangkot();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
           pixelOffset: new google.maps.Size(0, -33)
         });
         infoDua.push(infowindow); 
         hapusInfo();
         infowindow.open(map);
-        
       }  
     }
   }); 
