@@ -18,7 +18,7 @@ var centerLokasi; //untuk fungsi CallRoute()
 window.onload = function() {
   basemap();
   kecelakaan();
-  //kecamatanTampil();
+  kecamatanTampil();
 };
 
 function kecelakaan() //tampil digitasi 
@@ -86,42 +86,24 @@ function hapusRadius(){
   cekRadiusStatus = 'off';
 }
 
-// function kecamatanTampil(){
-//   kecamatan = new google.maps.Data();
-//   kecamatan.loadGeoJson(server+'data/kecamatan.php');
-//   kecamatan.setStyle(function(feature){
-//     var gid = feature.getProperty('id');
-//     if (gid == 'K001'){
-//       color = '#ff3300' 
-//       return({
-//         fillColor:color,
-//         strokeWeight:2.0,
-//         strokeColor:'black',
-//         fillOpacity:0.3,
-//         clickable: false
-//       }); 
-//     }
-//     else if(gid == 'K002'){ color = '#ffd777' 
-//       return({
-//       fillColor:color,
-//         strokeWeight:2.0,
-//         strokeColor:'black',
-//         fillOpacity:0.3,
-//         clickable: false
-//       });
-//     }
-//     else if(gid == 'K003'){ color = '#ec87ec' 
-//       return({
-//       fillColor:color,
-//         strokeWeight:2.0,
-//         strokeColor:'black',
-//         fillOpacity:0.3,
-//         clickable: false
-//       });
-//     }         
-//   });
-//   kecamatan.setMap(map);
-// }
+function kecamatanTampil(){
+  kecamatan = new google.maps.Data();
+  kecamatan.loadGeoJson(server+'data/kecamatan.php');
+  kecamatan.setStyle(function(feature){
+    var gid = feature.getProperty('id');
+   
+     if(gid == 'K003'){ color = '#ec87ec' 
+      return({
+      fillColor:color,
+        strokeWeight:2.0,
+        strokeColor:'black',
+        fillOpacity:0.3,
+        clickable: false
+      });
+    }         
+  });
+  kecamatan.setMap(map);
+}
 
 function cek(){
  document.getElementById('km').innerHTML=document.getElementById('inputradiusmes').value*100
