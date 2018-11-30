@@ -75,17 +75,25 @@
                               document.getElementById('inputradiuss').value*100
                             }
                           </script>
-                          <input  type="range" onchange="cekkk();aktifkanRadiuss()" id="inputradiuss" 
+                          <input  type="range" onchange="cekkk();aktifkanRadiuss();resultt()" id="inputradiuss" 
                                   name="inputradiuss" data-highlight="true" min="0" max="20" value="0" >
                         </div>
                       </ul>
                   </li>
 
                   <li class="sub-menu">
-                    <a class="" href="javascript:;" onclick="tampilsemua();resultt()">
+                    <a class="">
                       <i class="fa fa-map-marker"></i>
-                      <span>Show All Accident</span>
+                      <span>Show All </span>
                     </a>
+                    <ul class="sub">
+                      <li><a href="javascript:;" onclick="tampilsemua();resultt()">Kecelakaan</a></li>
+                      <li><a href="javascript:;" onclick="tampilrs();resultt()">Rumah Sakit</a></li>
+                      <li><a href="javascript:;" onclick="tampilpol();resultt()">Pos Polisi</a></li>
+                      <li><a href="javascript:;" onclick="tampilkeja();resultt()">Titik Kejahatan</a></li>
+                    </ul>
+
+
                   </li>
                   
                   <li class="sub-menu">
@@ -96,6 +104,8 @@
                       <ul class="sub">
                           <li><a href="javascript:;" onclick="kecelakaan_mobil();resultt()"><i class="fa fa-circle"></i>Car Accident</a></li>
                           <li><a href="javascript:;" onclick="kecelakaan_motor();resultt()"><i class="fa fa-circle"></i>Motorcycle Accident</a></li>
+
+                       
                       </ul>
 
 
@@ -104,7 +114,7 @@
                   <li class="sub-menu">
                 <a href="javascript:;" >
                   <i class="fa fa-search"></i>
-                  <span>Name Victim</span>
+                  <span>Korban Kecelakaan</span>
                 </a>
                 <ul class="sub">
                   <div class=" form-group">
@@ -112,7 +122,7 @@
                       <div class="search">
                         <div class="col-md-15 padding-0 text-center">
                          <div class="form-group form-animate-text"><br>
-                          <input type="text"  class="form-text" placeholder="...." id="nama_korban" name="nama_korban" required>
+                          <input type="text"  class="form-text" placeholder="Masukkan Nama" id="nama_korban" name="nama_korban" required>
                             <span class="bar"></span> 
                         </div>         
                        <button type="submit" class="btn btn-info btn-block btn-flat" id="kul_button" value="nama_korban" onclick='find_korban();resultt()'>Search</button>

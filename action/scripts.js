@@ -7,18 +7,16 @@ var markersDua = [];
 var infoDua = [];
 var directionsDisplay;
 var rute = [];  //NAVIGASI
-var angkot = [];
 var centerBaru;
 var fotosrc = server+'data/foto/';
 var pos ='null';
-var jalurAngkot=[];
 var centerLokasi; //untuk fungsi CallRoute()
 
 
 window.onload = function() {
   basemap();
   kecelakaan();
-  kecamatanTampil();
+ // kecamatanTampil();
 };
 
 function kecelakaan() //tampil digitasi 
@@ -229,6 +227,28 @@ function tampilsemua(){ //menampilkan semua
   }});
 }
 
+function tampilkeja(){ //menampilkan semua 
+  $.ajax({ url: server+'data/carikejahatan.php', data: "", dataType: 'json', success: function (rows){
+   // console.log("aa")
+    cari_kejahatan(rows);
+  }});
+}
+
+function tampilpol(){ //menampilkan semua 
+  $.ajax({ url: server+'data/caripol.php', data: "", dataType: 'json', success: function (rows){
+    //console.log("aa");
+    cari_pol(rows);
+  }});
+}
+
+function tampilrs(){ //menampilkan semua 
+  console.log("ss");
+  $.ajax({ url: server+'data/carirs.php', data: "", dataType: 'json', success: function (rows){
+    cari_rs(rows);
+
+  }});
+}
+
 function kecelakaan_mobil(){ //menampilkan 
   $.ajax({ url: server+'data/kecelakaan_mobil.php', data: "", dataType: 'json', success: function (rows){
     cari_kecelakaan(rows);
@@ -282,7 +302,6 @@ function cari_kecelakaan(rows){
   hapusInfo();
   clearroute2();
   clearroute();
- 
   hapusRadius();
   hapusMarkerTerdekat();
   if(rows==null){
@@ -312,6 +331,131 @@ function cari_kecelakaan(rows){
     $('#hasilcari').append("<tr>"+
       "<td>"+no_laporan+"</td>"+
       "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailkecelakaan(\""+id+"\");info1();'></a></td>"+
+     "</tr>");
+  }
+}
+
+function cari_rs(rows){ 
+  $('#hasilcari1').show();
+  $('#hasilcari').empty();
+  hapusInfo();
+  clearroute2();
+  clearroute();
+  hapusRadius();
+  hapusMarkerTerdekat();
+  if(rows==null){
+    alert('rs not found');
+  }
+  for (var i in rows) 
+  {
+    var row = rows[i];
+    var id = row.id;
+    var nama = row.nama;
+    var alamat = row.alamat;
+    
+    var latitude = row.latitude ;
+    var longitude = row.longitude ;
+    centerBaru = new google.maps.LatLng(latitude, longitude);
+    marker = new google.maps.Marker({
+      position: centerBaru,
+      icon:'/Basisdatalanjut/assets/ico/health-medical.png',
+      map: map,
+      animation: google.maps.Animation.DROP,
+    });
+    // console.log(id);
+    // console.log(latitude);
+    // console.log(longitude);
+    markersDua.push(marker);
+    map.setCenter(centerBaru);
+    klikInfoWindow(id);
+    map.setZoom(14);
+    $('#hasilcari').append("<tr>"+
+      "<td>"+nama+"</td>"+
+      "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailrs(\""+id+"\");info1();'></a></td>"+
+     "</tr>");
+  }
+}
+
+function cari_kejahatan(rows){ 
+  $('#hasilcari1').show();
+  $('#hasilcari').empty();
+  hapusInfo();
+  clearroute2();
+  clearroute();
+  hapusRadius();
+  hapusMarkerTerdekat();
+  if(rows==null){
+    alert('rs not found');
+  }
+  for (var i in rows) 
+  {
+    var row = rows[i];
+    var id = row.id;
+    var kronologis = row.kronologis;
+    var alamat = row.alamat;
+    var jenis_kejahatan = row.jenis_kejahatan;
+    
+    var latitude = row.latitude ;
+    var longitude = row.longitude ;
+    centerBaru = new google.maps.LatLng(latitude, longitude);
+    marker = new google.maps.Marker({
+      position: centerBaru,
+      icon:'/Basisdatalanjut/assets/ico/health-medical.png',
+      map: map,
+      animation: google.maps.Animation.DROP,
+    });
+    // console.log(id);
+    // console.log(latitude);
+    // console.log(longitude);
+    markersDua.push(marker);
+    map.setCenter(centerBaru);
+    klikInfoWindow(id);
+    map.setZoom(14);
+    $('#hasilcari').append("<tr>"+
+      "<td>"+id+"</td>"+
+      "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailrs(\""+id+"\");info1();'></a></td>"+
+     "</tr>");
+  }
+}
+
+function cari_pol(rows){ 
+  $('#hasilcari1').show();
+  $('#hasilcari').empty();
+  hapusInfo();
+  clearroute2();
+  clearroute();
+  hapusRadius();
+  hapusMarkerTerdekat();
+  if(rows==null){
+    alert('rs not found');
+  }
+  for (var i in rows) 
+  {
+    var row = rows[i];
+    var id = row.id;
+    var nama = row.nama;
+    var alamat = row.alamat;
+    var status = row.status;
+    
+    var latitude = row.latitude ;
+    var longitude = row.longitude ;
+    centerBaru = new google.maps.LatLng(latitude, longitude);
+    marker = new google.maps.Marker({
+      position: centerBaru,
+      icon:'/Basisdatalanjut/assets/ico/health-medical.png',
+      map: map,
+      animation: google.maps.Animation.DROP,
+    });
+    // console.log(id);
+    // console.log(latitude);
+    // console.log(longitude);
+    markersDua.push(marker);
+    map.setCenter(centerBaru);
+    klikInfoWindow(id);
+    map.setZoom(14);
+    $('#hasilcari').append("<tr>"+
+      "<td>"+nama+"</td>"+
+      "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailpol(\""+id+"\");info1();'></a></td>"+
      "</tr>");
   }
 }
@@ -354,7 +498,7 @@ function detailmes_infow(id){  //menampilkan informasi
         map.setZoom(18); 
         infowindow = new google.maps.InfoWindow({
           position: centerBaru,
-          content: "<span style=color:black><center><b>Information</b><br><img src='"+fotosrc+image+"' alt='image in infowindow' width='150'></center><br><i class='fa fa-info'></i> "+id+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br><a role='button' title='tracking' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();resetangkot();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
+          content: "<span style=color:black><center><b>Information</b><br><img src='"+fotosrc+image+"' alt='image in infowindow' width='150'></center><br><i class='fa fa-info'></i> "+id+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br><a role='button' title='tracking' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
           pixelOffset: new google.maps.Size(0, -33)
         });
         infoDua.push(infowindow); 
@@ -420,7 +564,6 @@ function cekRadiuss()
 
 function tampilradiuss()
 {
-  //hapusawal1();
   console.log("tampilradiuss")
   cekRadiuss();
   $('#hasilcari').append("<thead><th>Name</th><th colspan='2'>Action</th></thead>");
@@ -450,7 +593,6 @@ function tampilradiuss()
         console.log(longitude);
         console.log(rad);
         clickMarker(centerBaru, id);
-      //  $('#hasilcari1').append("<tr><td>"+id+"</td><td><a role='button' class='btn btn-success' onclick='detailkecelakaan(\""+id+"\");'>Info</a></td></tr>");     
        }
        
     }
@@ -516,11 +658,26 @@ function detailkecelakaan(id1){  //menampilkan informasi kecelakaan
         map.setCenter(centerBaru);
         map.setZoom(18); 
 
-        $('#info').append("<tr><td><b>No Laporan</b></td><td>:</td><td> "+id1+"</td></tr><tr><td><b>Keterangan Lokasi </b></td><td>:</td><td> "+alamat+"</td></tr><tr><td><b>total_kerugian</b></td><td>:</td><td> "+nama+" </sup></td></tr><tr><td><a class='btn btn-default' role=button' data-toggle='collapse' href='#terdekat1' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+nama+"\")' title='Nearby' aria-controls='Nearby'><i class='fa fa-compass' style='color:black;''></i><label>&nbsp Attraction Nearby</label></a><div class='collapse' id='terdekat1'><div class='well' style='width: 150%'><div class='checkbox'><label><input id='check_t' type='checkbox'>Rumah Sakit</label></div><div class='checkbox'><label><input id='check_i' type='checkbox'>Pos Polisi</label></div><label><b>Radius&nbsp</b></label><label style='color:black' id='km1'><b>0</b></label>&nbsp<label><b>m</b></label><br><input type='range' onchange='cek1();aktifkanRadiusSekitar();resultt1();info1();' id='inputradius1' name='inputradius1' data-highlight='true' min='1' max='15' value='1' ></div></div></td></tr>")
+        $('#info').append("<tr><td><b>No Laporan</b></td><td>:</td>"+
+          "<td> "+id1+"</td></tr><tr><td><b>Keterangan Lokasi </b>"+
+          "</td><td>:</td><td> "+alamat+"</td></tr><tr><td><b>total_kerugian</b>"+
+          "</td><td>:</td><td> "+nama+" </sup></td></tr><tr><td>"+
+          "<a class='btn btn-default' role=button' data-toggle='collapse' href='#terdekat1' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+nama+"\")' title='Nearby' aria-controls='Nearby'>"+
+          "<i class='fa fa-compass' style='color:black;''></i><label>&nbsp Attraction Nearby</label>"+
+          "</a><div class='collapse' id='terdekat1'><div class='well' style='width: 150%'>"+
+          "<div class='checkbox'><label><input id='check_t' type='checkbox'>Rumah Sakit</label>"+
+          "</div><div class='checkbox'><label><input id='check_h' value='5' type='checkbox'>Pos Polisi</label>"+
+          "</div><label><b>Radius&nbsp</b></label><label style='color:black' id='km1'><b>0</b>"+
+          "</label>&nbsp<label><b>m</b></label><br><input type='range' onchange='cek1();aktifkanRadiusSekitar();resultt1();info1();' id='inputradius1' name='inputradius1' data-highlight='true' min='1' max='15' value='1' >"+
+          "</div></div></td></tr>")
         
         infowindow = new google.maps.InfoWindow({
           position: centerBaru,
-         content: "<span style=color:black><center><b>Information</b><br></center><br><i class='fa fa-home'></i> "+nama+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br><a role='button' title='tracking' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
+         content: "<span style=color:black><center><b>Information</b><br></center><br><i class='fa fa-home'>"+
+         "</i> "+nama+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br>"+
+         "<a role='button' title='tracking' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();'></a>"+
+         "&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'>"+
+         "</a></span>",
           pixelOffset: new google.maps.Size(0, -33)
         });
 
@@ -540,7 +697,7 @@ function detailkecelakaan(id1){  //menampilkan informasi kecelakaan
           var nama = row.nama;
           var jenis_k = row.jenis_kelamin;
           var kondisi = row.kondisi;
-          console.log(nama);
+          //wconsole.log(nama);
           // isi = isi+"<tr><td>"+no_ktp+"</td>&nbsp<td>"+nama+"</td><td></td>&nbsp<td>"+kondisi+"</td>&nbsp</tr><br>";
           $('#infocieklai').append("<tr><td>"+nama+"</td><td>"+no_ktp+"</td><td>"+jenis_k+"</td><td>"+kondisi+"</td></tr>");
         }//end for
@@ -599,7 +756,7 @@ function info1(){
   $("#infoev").hide();   
 }
 
-function aktifkanRadiussekitar(){
+function aktifkanRadiusSekitar(){
   console.log("FUNGSI aktifkanRadiusSekitar()");
   hapusRadius();
   hapusMarkerTerdekat();
@@ -627,13 +784,300 @@ function aktifkanRadiussekitar(){
   console.log("FUNGSI aktifkanRadiusSekitar()");
 
   if (document.getElementById('check_t').checked) {
-    owsekitar(rad_lat,rad_lng,rad);
+    rumahsakitsekitar(rad_lat,rad_lng,rad);
   } 
   if (document.getElementById('check_h').checked) {
-    hotelsekitar(rad_lat,rad_lng,rad);
+    pospolisisekitar(rad_lat,rad_lng,rad);
   }
  
 }
+
+function pospolisisekitar(latitude,longitude,rad){ // HOTEL SEKITAR MASJID
+
+          $('#hasilcari2').show();
+      $('#hasilcariaround').empty();
+      cekRadius1();
+          $.ajax({url: server+'data/pospolisisekitar.php?lat='+latitude+'&long='+longitude+'&rad='+rad, data: "", dataType: 'json', success: function(rows){ 
+            for (var i in rows){ 
+              var row = rows[i];
+              var id = row.id;
+              var nama = row.name;
+              var alamat = row.address;
+              var status = row.status;
+              var lat=row.latitude;
+              var lon = row.longitude;
+        console.log(name);
+        centerBaru = new google.maps.LatLng(lat, lon);
+              marker = new google.maps.Marker
+            ({
+              position: centerBaru,
+              icon:'assets/ico/employment.png',
+              map: map,
+              animation: google.maps.Animation.DROP,
+            });
+            console.log(id);
+              console.log(lat);
+              console.log(lon);
+              markersDua.push(marker);
+              map.setCenter(centerBaru);
+        klikInfoWindow_pol(id);
+              map.setZoom(14);
+      $('#hasilcariaround').append("<tr><td>"+nama+"</td><td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailpol(\""+id+"\");info1();'>"+
+        "</a></td></tr>");
+            }//end for
+          }});//end ajax  
+        }
+
+         function klikInfoWindow_pol(id)
+{
+    google.maps.event.addListener(marker, "click", function(){
+        detailpol_infow(id);
+       
+      });
+
+} 
+
+function detailpol_infow(id){  //menampilkan Information hotel
+  
+  $('#info').empty();
+   hapusInfo();
+      clearroute2();
+    clearroute();
+       $.ajax({ 
+      url: server+'data/detailrs.php?cari='+id, data: "", dataType: 'json', success: function(rows)
+        { 
+          console.log(id);
+         for (var i in rows) 
+          { 
+
+            console.log('dd');
+            var row = rows[i];
+            var id = row.id;
+            var name = row.nama;
+            var address=row.alamat;
+            var lat  = row.latitude; 
+            var lon = row.longitude ;
+            centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
+            marker = new google.maps.Marker
+            ({
+              position: centerBaru,
+              icon:'assets/ico/health-medical.png',
+              map: map,
+              animation: google.maps.Animation.DROP,
+            });
+              console.log(lat);
+              console.log(lon);
+              markersDua.push(marker);
+            map.setCenter(centerBaru);
+            map.setZoom(18); 
+
+            infowindow = new google.maps.InfoWindow({
+            position: centerBaru,
+            content: "<span style=color:black><center><b>Information</b></center><br><i class='fa fa-home'></i> "+nama+"<br><i class='fa fa-map-marker'></i> "+alamat+"<br>"
+            +"<a role='button' title='Route from your position' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();'></a>&nbsp"+"<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
+            pixelOffset: new google.maps.Size(0, -33)
+            });
+          infoDua.push(infowindow); 
+          hapusInfo();
+          infowindow.open(map);
+            
+          }  
+           
+
+        }
+      }); 
+}    
+
+
+
+
+        function rumahsakitsekitar(latitude,longitude,rad){ // HOTEL SEKITAR MASJID
+
+          $('#hasilcari2').show();
+      $('#hasilcariaround').empty();
+      cekRadius1();
+          $.ajax({url: server+'data/rumahsakitsekitar.php?lat='+latitude+'&long='+longitude+'&rad='+rad, data: "", dataType: 'json', success: function(rows){ 
+            for (var i in rows){ 
+              var row = rows[i];
+              var id_rs = row.id;
+              var nama = row.name;
+              var alamat = row.alamat;
+              var lat=row.latitude;
+              var lon = row.longitude;
+        console.log(name);
+        centerBaru = new google.maps.LatLng(lat, lon);
+              marker = new google.maps.Marker
+            ({
+              position: centerBaru,
+              icon:'assets/ico/health-medical.png',
+              map: map,
+              animation: google.maps.Animation.DROP,
+            });
+            console.log(id_rs);
+              console.log(lat);
+              console.log(lon);
+              console.log(nama);
+              
+              markersDua.push(marker);
+              map.setCenter(centerBaru);
+        klikInfoWindow_rs(id_rs);
+              map.setZoom(14);
+      $('#hasilcariaround').append("<tr><td>"+nama+"</td><td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailrs(\""+id_rs+"\");info1();'></a></td><td></td></tr>");
+            }//end for
+          }});//end ajax  
+        }
+
+
+ function klikInfoWindow_rs(id)
+{
+    google.maps.event.addListener(marker, "click", function(){
+        detailrs_infow(id);
+       
+      });
+
+}  
+
+function detailrs_infow(id){  //menampilkan Information hotel
+  
+  $('#info').empty();
+   hapusInfo();
+      clearroute2();
+    clearroute();
+       $.ajax({ 
+      url: server+'data/detailrs.php?cari='+id, data: "", dataType: 'json', success: function(rows)
+        { 
+          console.log(id);
+         for (var i in rows) 
+          { 
+
+            console.log('dd');
+            var row = rows[i];
+            var id = row.id;
+            var name = row.nama;
+            var address=row.alamat;
+            var lat  = row.latitude; 
+            var lon = row.longitude ;
+            centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
+            marker = new google.maps.Marker
+            ({
+              position: centerBaru,
+              icon:'assets/ico/health-medical.png',
+              map: map,
+              animation: google.maps.Animation.DROP,
+            });
+              console.log(lat);
+              console.log(lon);
+              console.log(name);
+              markersDua.push(marker);
+            map.setCenter(centerBaru);
+            map.setZoom(18); 
+
+            infowindow = new google.maps.InfoWindow({
+            position: centerBaru,
+            content: "<span style=color:black><center><b>Information</b></center><br><i class='fa fa-home'></i> "+name+"<br><i class='fa fa-map-marker'></i> "+address+"<br>"
+            +"<a role='button' title='Route from your position' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();'></a>&nbsp"+"<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
+            pixelOffset: new google.maps.Size(0, -33)
+            });
+          infoDua.push(infowindow); 
+          hapusInfo();
+          infowindow.open(map);
+            
+          }  
+           
+
+        }
+      }); 
+}     
+
+function detailrs(id1){  //menampilkan Information 
+  $('#info').empty();
+  hapusInfo();
+  clearroute2();
+  clearroute();
+  hapusMarkerTerdekat();
+  $.ajax({ 
+    url: server+'data/detailrs.php?cari='+id1, data: "", dataType: 'json', success: function(rows){ 
+      console.log(id1);
+      for (var i in rows) { 
+        console.log('detail rs');
+        var row = rows[i];
+        var id = row.id;
+        var nama = row.name;
+        var address=row.alamat;
+        var latitude  = row.latitude; 
+        var longitude = row.longitude ;
+        centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
+        marker = new google.maps.Marker({
+          position: centerBaru,
+          icon:'/Basisdatalanjut/assets/ico/health-medical.png',
+          map: map,
+          animation: google.maps.Animation.DROP,
+        });
+        console.log(latitude);
+        console.log(nama);
+        markersDua.push(marker);
+        map.setCenter(centerBaru);
+        map.setZoom(18); 
+        $('#info').append("<tr><td><b>Name</b></td><td>:</td><td> "+nama+"</td></tr><tr><td><b>Address </b></td><td>:</td><td> "+address+"</td></tr>")
+        // <a class='btn btn-default fa fa-compass' title='Attraction Nearby' onclick='owsekitar("+latitude+","+longitude+",200);ow();owtampil();'></a></td></tr> ");
+        infowindow = new google.maps.InfoWindow({
+          position: centerBaru,
+          content: "<span style=color:black><center><b>Information</b><br></center><br><i class='fa fa-home'></i> "+name+"<br><i class='fa fa-map-marker'></i> "+address+"<br><a role='button' title='Route from your position' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
+          pixelOffset: new google.maps.Size(0, -33)
+        });
+        infoDua.push(infowindow); 
+        hapusInfo();
+        infowindow.open(map);
+      }  
+    }
+  }); 
+}
+
+function detailpol(id1){  //menampilkan Information 
+  $('#info').empty();
+  hapusInfo();
+  clearroute2();
+  clearroute();
+  hapusMarkerTerdekat();
+  $.ajax({ 
+    url: server+'data/detailpol.php?cari='+id1, data: "", dataType: 'json', success: function(rows){ 
+      console.log(id1);
+      for (var i in rows) { 
+        console.log('detail pol');
+        var row = rows[i];
+        var id = row.id;
+        var nama = row.name;
+        var address=row.alamat;
+        var status = row.status;
+        var latitude  = row.latitude; 
+        var longitude = row.longitude ;
+        centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
+        marker = new google.maps.Marker({
+          position: centerBaru,
+          icon:'/Basisdatalanjut/assets/ico/health-medical.png',
+          map: map,
+          animation: google.maps.Animation.DROP,
+        });
+        console.log(latitude);
+        console.log(nama);
+        markersDua.push(marker);
+        map.setCenter(centerBaru);
+        map.setZoom(18); 
+        $('#info').append("<tr><td><b>Name</b></td><td>:</td><td> "+nama+"</td></tr><tr><td><b>Address </b></td><td>:</td><td> "+address+"</td></tr><tr><td><b>Status </b></td><td>:</td><td> "+status+"</td></tr>")
+        // <a class='btn btn-default fa fa-compass' title='Attraction Nearby' onclick='owsekitar("+latitude+","+longitude+",200);ow();owtampil();'></a></td></tr> ");
+        infowindow = new google.maps.InfoWindow({
+          position: centerBaru,
+          content: "<span style=color:black><center><b>Information</b><br></center><br><i class='fa fa-home'></i> "+name+"<br><i class='fa fa-map-marker'></i> "+address+"<br><a role='button' title='Route from your position' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
+          pixelOffset: new google.maps.Size(0, -33)
+        });
+        infoDua.push(infowindow); 
+        hapusInfo();
+        infowindow.open(map);
+      }  
+    }
+  }); 
+}
+
 
 function galeri(a){
   console.log(a);
@@ -646,6 +1090,12 @@ function info12(){
   $("#infoo").hide();
   $("#att2").hide();
   $("#infoev").hide();   
+
+  function hapusMarkerTerdekat() {
+  for (var i = 0; i < markersDua.length; i++) {
+    markersDua[i].setMap(null);
+  }
+}
 }
 
 
@@ -757,7 +1207,9 @@ function hideLegenda() {
 function kecelakaanradius(){ //menampilkan kecelakaan berdasarkan radius
    
     $('#hasilcari1').show();
+
     $('#hasilcari').empty();
+    $('#hasilcari').show();
       hapusInfo();
       clearroute2();
     clearroute();
@@ -774,7 +1226,7 @@ function kecelakaanradius(){ //menampilkan kecelakaan berdasarkan radius
             {   
               var row     = rows[i];
               var id   = row.id;
-              var nama   = row.name;
+              var nama   = row.id;
               var latitude  = row.latitude ;
               var longitude = row.longitude ;
               centerBaru = new google.maps.LatLng(latitude, longitude);
