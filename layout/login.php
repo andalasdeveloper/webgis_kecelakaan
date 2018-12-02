@@ -20,7 +20,7 @@ if(isset($_SESSION['A'])){
     <link href="/Basisdatalanjut/assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="/Basisdatalanjut/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        
+            
     <!-- Custom styles for this template -->
     <link href="/Basisdatalanjut/assets/css/style.css" rel="stylesheet">
     <link href="/Basisdatalanjut/assets/css/style-responsive.css" rel="stylesheet">

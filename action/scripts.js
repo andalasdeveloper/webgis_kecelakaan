@@ -362,9 +362,7 @@ function cari_rs(rows){
       map: map,
       animation: google.maps.Animation.DROP,
     });
-    // console.log(id);
-    // console.log(latitude);
-    // console.log(longitude);
+  
     markersDua.push(marker);
     map.setCenter(centerBaru);
     klikInfoWindow(id);
@@ -385,7 +383,7 @@ function cari_kejahatan(rows){
   hapusRadius();
   hapusMarkerTerdekat();
   if(rows==null){
-    alert('rs not found');
+    alert('kriminal not found');
   }
   for (var i in rows) 
   {
@@ -411,9 +409,10 @@ function cari_kejahatan(rows){
     map.setCenter(centerBaru);
     klikInfoWindow(id);
     map.setZoom(14);
+    //console.log("infokejahatan");
     $('#hasilcari').append("<tr>"+
       "<td>"+id+"</td>"+
-      "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailrs(\""+id+"\");info1();'></a></td>"+
+      "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='infokj();'></a></td>"+
      "</tr>");
   }
 }
@@ -446,9 +445,7 @@ function cari_pol(rows){
       map: map,
       animation: google.maps.Animation.DROP,
     });
-    // console.log(id);
-    // console.log(latitude);
-    // console.log(longitude);
+ 
     markersDua.push(marker);
     map.setCenter(centerBaru);
     klikInfoWindow(id);
@@ -726,6 +723,15 @@ function info1(){
   $("#infoo").show();
   $("#att2").hide();
   $("#radiuss").hide()
+  $("#infoo1").hide();  
+  $("#infoev").hide();
+  $("#infokejahatan").hide();   
+}
+
+function infokj(){
+  $("#infokejahatan").show();
+  $("#att2").hide();
+  $("#radiuss").hide()
   $("#infoo1").hide();;  
   $("#infoev").hide();   
 }
@@ -746,6 +752,7 @@ function resultt1(){
   $("#infoo1").hide();
   $("#att2").hide();
   $("#infoev").hide(); 
+  $("#infokejahatan").hide();
 }
 
 function info1(){
@@ -754,6 +761,7 @@ function info1(){
   $("#radiuss").hide()
   $("#infoo1").hide();; 
   $("#infoev").hide();   
+  $("#infokejahatan").hide();
 }
 
 function aktifkanRadiusSekitar(){
@@ -883,7 +891,6 @@ function detailpol_infow(id){  //menampilkan Information hotel
             
           }  
            
-
         }
       }); 
 }    
