@@ -261,6 +261,31 @@ function kecelakaan_motor(){ //menampilkan
   }});
 }
 
+function kece_waktu(){  
+  if(tgl_kecelakaan=='')
+  {
+    alert("Isi kolom pencarian terlebih dahulu !");
+  }
+  else
+  {
+    console.log("hai");
+    $('#hasilcari').append("<thead><th>Name</th><th colspan='3'>Action</th></thead>");
+    var tgl_kecelakaan = document.getElementById('tgl_kecelakaan').value;
+    $.ajax
+    ({ 
+      url: server+'data/waktu_kecelakaan.php?tgl_kecelakaan='+tgl_kecelakaan, data: "", dataType: 'json', success: function(rows)
+      { 
+        if(rows==null)
+        {
+          alert('Data Did Not Exist !');
+        }
+        cari_kecelakaan(rows);
+        
+      }
+    }); 
+  }
+}
+
 function find_korban(){  
   if(nama_korban=='')
   {
@@ -284,14 +309,11 @@ function find_korban(){
           var row     = rows[i];
           var id  = row.id;
           console.log(id);
-         // $('#hasilcari').append("<tr><td>"+name+"</td><td><a role='button' class='btn btn-success' onclick='detculi(\""+id+"\");detailinfokul(\""+id+"\");'>Show</a></td><td><a role='button' class='btn btn-danger fa fa-taxi' onclick='kulAngkot(\""+id+"\")'></a></td></tr>");
-        }   
+         }   
         $.ajax({ url: server+'data/detailkecelakaan1.php?cari='+id, data: "", dataType: 'json', success: function (rows){
           cari_kecelakaan(rows);
         }});
-        //$('#hasilpencarian').append("<h5 class='box-title' id='hasilpencarian'>Result :</h5>"+rows.length);
       }
-
     }); 
   }
 }
@@ -302,7 +324,7 @@ function cari_kecelakaan(rows){
   $('#hasilcari').append("<tr>"+
       "<th>NO LAPORAN</th>"+
       "<th>Petugas Pelapor</th>"+ 
-      "<th>Jenis Kecelakaan</th>"+
+      "<th>Waktu kejadian</th>"+
       "<th>Detail</th>"+
       "</tr>");
 
@@ -320,6 +342,7 @@ function cari_kecelakaan(rows){
     var id = row.id_kecelakaan;
     var no_laporan = row.id_kecelakaan;
     var pelapor = row.petugas;
+    var waktu = row.waktu;
     var jenis = row.jenis_kecelakaan;
     var latitude = row.latitude ;
     var longitude = row.longitude ;
@@ -340,7 +363,7 @@ function cari_kecelakaan(rows){
     $('#hasilcari').append("<tr>"+
       "<td>"+no_laporan+"</td>"+
       "<td>"+pelapor+"</td>"+
-      "<td>"+jenis+"</td>"+
+      "<td>"+waktu+"</td>"+
       "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailkecelakaan(\""+id+"\");info1();'></a></td>"+
       "</tr>");
   }

@@ -144,10 +144,10 @@
                       <div class="search">
                         <div class="col-md-15 padding-0 text-center">
                          <div class="form-group form-animate-text"><br>
-                          <input type="date"  class="form-text" placeholder="Masukkan Nama" id="tgl_kejadian" name="tgl_kecelakaan" required>
+                          <input type="date"  class="form-text"  id="tgl_kecelakaan" name="tgl_kecelakaan" required>
                             <span class="bar"></span> 
                         </div>         
-                       <button type="submit" class="btn btn-info btn-block btn-flat" id="date_button" value="" onclick='resultt()'>Search</button>
+                       <button type="submit" class="btn btn-info btn-block btn-flat" id="date_button" value="tgl_kecelakaan" onclick='kece_waktu()'>Search</button>
                      </div> 
                      </div> 
                     </li>
