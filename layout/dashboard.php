@@ -85,10 +85,15 @@
       <!--COMPLETED ACTIONS DONUTS CHART-->
       <section class="panel">
         <div class="panel-body">
-          <h3>NO LAPORAN</h3>
+          <h3>LAPORAN</h3>
             <div class="box-body" style="max-height:400px;overflow:auto;">
               <div class="form-group" id="hasilcari1" style="display:none;">
                 <table class="table table-bordered" id='hasilcari'>
+                    <tr>
+                       <th>NO LAPORAN</th>
+                       <th>Petugas Pelapor</th> 
+                       <th>Detail</th>
+                    </tr>
               </table>  
             </div>                   
           </div>

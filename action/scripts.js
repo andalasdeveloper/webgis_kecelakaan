@@ -299,6 +299,13 @@ function find_korban(){
 function cari_kecelakaan(rows){ 
   $('#hasilcari1').show();
   $('#hasilcari').empty();
+  $('#hasilcari').append("<tr>"+
+      "<th>NO LAPORAN</th>"+
+      "<th>Petugas Pelapor</th>"+ 
+      "<th>Jenis Kecelakaan</th>"+
+      "<th>Detail</th>"+
+      "</tr>");
+
   hapusInfo();
   clearroute2();
   clearroute();
@@ -313,6 +320,7 @@ function cari_kecelakaan(rows){
     var id = row.id_kecelakaan;
     var no_laporan = row.id_kecelakaan;
     var pelapor = row.petugas;
+    var jenis = row.jenis_kecelakaan;
     var latitude = row.latitude ;
     var longitude = row.longitude ;
     centerBaru = new google.maps.LatLng(latitude, longitude);
@@ -331,7 +339,8 @@ function cari_kecelakaan(rows){
     map.setZoom(14);
     $('#hasilcari').append("<tr>"+
       "<td>"+no_laporan+"</td>"+
-      "<td>"+pelapor+"</td>"
+      "<td>"+pelapor+"</td>"+
+      "<td>"+jenis+"</td>"+
       "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailkecelakaan(\""+id+"\");info1();'></a></td>"+
       "</tr>");
   }
