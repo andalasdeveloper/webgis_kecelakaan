@@ -62,7 +62,7 @@
                   <li class="sub-menu">
                     <a class="" href="javascript:;">
                         <i class="fa fa-thumb-tack"></i>
-                        <span>Accident By Radius</span>
+                        <span>Kecelakaan Radius</span>
                     </a>
                     <ul class="treeview-menu">
                         <div class=" form-group" style="color: white;"> <br>
@@ -84,7 +84,7 @@
                   <li class="sub-menu">
                     <a class="">
                       <i class="fa fa-map-marker"></i>
-                      <span>Show All </span>
+                      <span>Tampil Semua</span>
                     </a>
                     <ul class="sub">
                       <li><a href="javascript:;" onclick="tampilsemua();resultt()">Kecelakaan</a></li>
@@ -99,11 +99,11 @@
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-search"></i>
-                          <span>Accident By Detail</span>
+                          <span>Berdasarkan Kendaraan</span>
                       </a>
                       <ul class="sub">
-                          <li><a href="javascript:;" onclick="kecelakaan_mobil();resultt()"><i class="fa fa-circle"></i>Car Accident</a></li>
-                          <li><a href="javascript:;" onclick="kecelakaan_motor();resultt()"><i class="fa fa-circle"></i>Motorcycle Accident</a></li>
+                          <li><a href="javascript:;" onclick="kecelakaan_mobil();resultt()"><i class="fa fa-circle"></i>Kecelakaan Mobil</a></li>
+                          <li><a href="javascript:;" onclick="kecelakaan_motor();resultt()"><i class="fa fa-circle"></i>Kecelakaan Motor</a></li>
 
                        
                       </ul>
@@ -126,6 +126,28 @@
                             <span class="bar"></span> 
                         </div>         
                        <button type="submit" class="btn btn-info btn-block btn-flat" id="kul_button" value="nama_korban" onclick='find_korban();resultt()'>Search</button>
+                     </div> 
+                     </div> 
+                    </li>
+                  </div>         
+                </ul>
+                </li>
+
+                <li class="sub-menu">
+                <a href="javascript:;" >
+                  <i class="fa fa-search"></i>
+                  <span>Berdasrkan Waktu</span>
+                </a>
+                <ul class="sub">
+                  <div class=" form-group">
+                    <li>
+                      <div class="search">
+                        <div class="col-md-15 padding-0 text-center">
+                         <div class="form-group form-animate-text"><br>
+                          <input type="date"  class="form-text" placeholder="Masukkan Nama" id="tgl_kejadian" name="tgl_kecelakaan" required>
+                            <span class="bar"></span> 
+                        </div>         
+                       <button type="submit" class="btn btn-info btn-block btn-flat" id="date_button" value="" onclick='resultt()'>Search</button>
                      </div> 
                      </div> 
                     </li>
