@@ -5,7 +5,8 @@ require $action.'/connect.php';
 
 $cari_nama = $_GET["cari_nama"];
 
-$querysearch = "select korban_kecelakaan.id_kecelakaan from korban_kecelakaan where nama='ferguso' union select korban_kendaraan.id_kecelakaan from korban_kendaraan where lower(nama)like lower('%$cari_nama%')";
+$querysearch = "SELECT korban_kecelakaan.id_kecelakaan FROM korban_kecelakaan WHERE nama='%$cari_nama%' 
+UNION SELECT korban_kendaraan.id_kecelakaan FROM korban_kendaraan WHERE lower(nama)LIKE lower('%$cari_nama%')";
 
 
 $hasil=pg_query($querysearch);

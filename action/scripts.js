@@ -16,7 +16,7 @@ var centerLokasi; //untuk fungsi CallRoute()
 window.onload = function() {
   basemap();
   kecelakaan();
- // kecamatanTampil();
+ //kecamatanTampil();
 };
 
 function kecelakaan() //tampil digitasi 
@@ -312,6 +312,7 @@ function cari_kecelakaan(rows){
     var row = rows[i];
     var id = row.id_kecelakaan;
     var no_laporan = row.id_kecelakaan;
+    var pelapor = row.petugas;
     var latitude = row.latitude ;
     var longitude = row.longitude ;
     centerBaru = new google.maps.LatLng(latitude, longitude);
@@ -323,15 +324,16 @@ function cari_kecelakaan(rows){
     });
     // console.log(id);
     // console.log(latitude);
-    // console.log(longitude);
+     console.log(pelapor);
     markersDua.push(marker);
     map.setCenter(centerBaru);
     klikInfoWindow(id);
     map.setZoom(14);
     $('#hasilcari').append("<tr>"+
       "<td>"+no_laporan+"</td>"+
+      "<td>"+pelapor+"</td>"
       "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailkecelakaan(\""+id+"\");info1();'></a></td>"+
-     "</tr>");
+      "</tr>");
   }
 }
 
@@ -761,7 +763,7 @@ function info1(){
   $("#radiuss").hide()
   $("#infoo1").hide();; 
   $("#infoev").hide();   
-  $("#infokejahatan").hide();
+  $("#infokejahatan").hide(); 
 }
 
 function aktifkanRadiusSekitar(){
