@@ -417,7 +417,7 @@ function cari_rs(rows){
     map.setZoom(14);
     $('#hasilcari').append("<tr>"+
       "<td>"+nama+"</td>"+
-      "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailrs(\""+id+"\");info1();'></a></td>"+
+      "<td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailrs(\""+id+"\");infors()'></a></td>"+
      "</tr>");
   }
 }
@@ -781,6 +781,16 @@ function info1(){
   $("#infokejahatan").hide();   
 }
 
+function infors(){
+  $("#infoo").hide();
+  $("#infors").show();
+  $("#att2").hide();
+  $("#radiuss").hide()
+  $("#infoo1").hide();  
+  $("#infoev").hide();
+  $("#infokejahatan").hide();   
+}
+
 function infokj(){
   $("#infokejahatan").show();
   $("#att2").hide();
@@ -900,15 +910,16 @@ function pospolisisekitar(latitude,longitude,rad){ // HOTEL SEKITAR MASJID
 
 function detailpol_infow(id){  //menampilkan Information hotel
   
-  $('#info').empty();
+  $('#infors').empty();
+  $('#infors').show();
    hapusInfo();
-      clearroute2();
+   clearroute2();
     clearroute();
        $.ajax({ 
       url: server+'data/detailrs.php?cari='+id, data: "", dataType: 'json', success: function(rows)
         { 
           console.log(id);
-         for (var i in rows) 
+         for (var i in rows.data_rs) 
           { 
 
             console.log('dd');
@@ -982,7 +993,7 @@ function detailpol_infow(id){  //menampilkan Information hotel
               map.setCenter(centerBaru);
         klikInfoWindow_rs(id_rs);
               map.setZoom(14);
-      $('#hasilcariaround').append("<tr><td>"+nama+"</td><td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailrs(\""+id_rs+"\");info1();'></a></td><td></td></tr>");
+      $('#hasilcariaround').append("<tr><td>"+nama+"</td><td><a role='button' title='info' class='btn btn-default fa fa-info' onclick='detailrs(\""+id_rs+"\");infors();'></a></td><td></td></tr>");
             }//end for
           }});//end ajax  
         }
@@ -1007,7 +1018,7 @@ function detailrs_infow(id){  //menampilkan Information hotel
       url: server+'data/detailrs.php?cari='+id, data: "", dataType: 'json', success: function(rows)
         { 
           console.log(id);
-         for (var i in rows) 
+         for (var i in rows.data_rs) 
           { 
             console.log('dd');
             var row = rows[i];
@@ -1046,7 +1057,8 @@ function detailrs_infow(id){  //menampilkan Information hotel
 }     
 
 function detailrs(id1){  //menampilkan Information 
-  $('#info').empty();
+  $('#infors').empty();
+  $('#infors').show();
   hapusInfo();
   clearroute2();
   clearroute();
@@ -1054,9 +1066,11 @@ function detailrs(id1){  //menampilkan Information
   $.ajax({ 
     url: server+'data/detailrs.php?cari='+id1, data: "", dataType: 'json', success: function(rows){ 
       console.log(id1);
-      for (var i in rows) { 
+
+      for (var i in rows.data_rs) { 
         console.log('detail rs');
-        var row = rows[i];
+
+        var row = rows.data_rs[i];
         var id = row.id;
         var nama = row.name;
         var address=row.alamat;
@@ -1074,7 +1088,10 @@ function detailrs(id1){  //menampilkan Information
         markersDua.push(marker);
         map.setCenter(centerBaru);
         map.setZoom(18); 
-        $('#info').append("<tr><td><b>Name</b></td><td>:</td><td> "+nama+"</td></tr><tr><td><b>Address </b></td><td>:</td><td> "+address+"</td></tr>")   
+
+        $('#infors1').append("<tr><td><b>Name</b></td><td>:</td><td> "+nama+"</td></tr><tr><td><b>Address </b></td><td>:</td><td> "+address+"</td></tr>")   
+        
+
         infowindow = new google.maps.InfoWindow({
           position: centerBaru,
           content: "<span style=color:black><center><b>Information</b><br></center><br><i class='fa fa-home'></i> "+name+"<br><i class='fa fa-map-marker'></i> "+address+"<br><a role='button' title='Route from your position' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
