@@ -89,11 +89,7 @@
             <div class="box-body" style="max-height:400px;overflow:auto;">
               <div class="form-group" id="hasilcari1" style="display:none;">
                 <table class="table table-bordered" id='hasilcari'>
-                    <tr>
-                       <th>NO LAPORAN</th>
-                       <th>Petugas Pelapor</th> 
-                       <th>Detail</th>
-                    </tr>
+                   
               </table>  
             </div>                   
           </div>
@@ -123,6 +119,28 @@
               <table class="table" id='infocieklai1'>
                 
               </table>
+            </div> 
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-sm-8" style="display:none;" id="infors">
+      <section class="panel">
+        <div class="panel-body">
+          <a class="btn btn-compose">Information</a>
+          <div class="box-body" style="max-height:350px;overflow:auto;">
+            <div class="form-group">
+              <table class="table" id='infors1'>
+                <tbody  style='vertical-align:top;'>
+                  
+                </tbody> 
+              </table>
+              <a class="btn btn-compose">Korban</a>
+              <table class="table" id='inforscieklai'>
+                
+              </table>
+            
             </div> 
           </div>
         </div>
