@@ -16,7 +16,7 @@ var centerLokasi; //untuk fungsi CallRoute()
 window.onload = function() {
   basemap();
   kecelakaan();
- //kecamatanTampil();
+ kecamatanTampil();
 };
 
 function kecelakaan() //tampil digitasi 
@@ -37,7 +37,7 @@ function kecelakaan() //tampil digitasi
 
 function basemap(){
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
+    zoom: 11,
     center: new google.maps.LatLng(-0.940891,100.4035583),
     mapTypeId: google.maps.MapTypeId.ROADMAP,
   });
@@ -90,16 +90,26 @@ function kecamatanTampil(){
   kecamatan.setStyle(function(feature){
     var gid = feature.getProperty('id');
    
-     if(gid == 'K003'){ color = '#ec87ec' 
+     if(gid == 'K003'){  
       return({
-      fillColor:color,
+      fillColor:'#42cb6f',
         strokeWeight:2.0,
-        strokeColor:'black',
+        strokeColor:'#42cb6f',
         fillOpacity:0.3,
         clickable: false
       });
-    }         
+    }
+    else if(gid == 'K002'){  
+        return({
+        fillColor:'#ec87ec',
+          strokeWeight:2.0,
+          strokeColor:'#ec87ec',
+          fillOpacity:0.3,
+          clickable: false
+        });
+      }         
   });
+
   kecamatan.setMap(map);
 }
 
@@ -372,6 +382,10 @@ function cari_kecelakaan(rows){
 function cari_rs(rows){ 
   $('#hasilcari1').show();
   $('#hasilcari').empty();
+  $('#hasilcari').append("<tr>"+
+      "<th>Nama Rumah Sakit</th>"+
+      "<th>Detail</th>"+  
+     "</tr>");
   hapusInfo();
   clearroute2();
   clearroute();
@@ -675,6 +689,7 @@ function detailkecelakaan(id1){  //menampilkan informasi kecelakaan
         var id = row.id_kecelakaan;
         var nama = row.total_kerugian;
         var alamat=row.keterangan_lokasi;
+        var waktu = row.waktu;
         var latitude  = row.latitude;
         var longitude = row.longitude ;
         centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
@@ -692,7 +707,9 @@ function detailkecelakaan(id1){  //menampilkan informasi kecelakaan
         $('#info').append("<tr><td><b>No Laporan</b></td><td>:</td>"+
           "<td> "+id1+"</td></tr><tr><td><b>Keterangan Lokasi </b>"+
           "</td><td>:</td><td> "+alamat+"</td></tr><tr><td><b>total_kerugian</b>"+
-          "</td><td>:</td><td> "+nama+" </sup></td></tr><tr><td>"+
+          "</td><td>:</td><td> "+nama+" </sup></td></tr><tr><td><tr><td><b>waktu kecelakaan</b>"+
+          "</td><td>:</td><td> "+waktu+" </sup></td></tr><tr><td>"+
+
           "<a class='btn btn-default' role=button' data-toggle='collapse' href='#terdekat1' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+nama+"\")' title='Nearby' aria-controls='Nearby'>"+
           "<i class='fa fa-compass' style='color:black;''></i><label>&nbsp Attraction Nearby</label>"+
           "</a><div class='collapse' id='terdekat1'><div class='well' style='width: 150%'>"+
@@ -990,7 +1007,6 @@ function detailrs_infow(id){  //menampilkan Information hotel
           console.log(id);
          for (var i in rows) 
           { 
-
             console.log('dd');
             var row = rows[i];
             var id = row.id;
@@ -1021,11 +1037,8 @@ function detailrs_infow(id){  //menampilkan Information hotel
             });
           infoDua.push(infowindow); 
           hapusInfo();
-          infowindow.open(map);
-            
-          }  
-           
-
+          infowindow.open(map); 
+          } 
         }
       }); 
 }     
@@ -1059,8 +1072,7 @@ function detailrs(id1){  //menampilkan Information
         markersDua.push(marker);
         map.setCenter(centerBaru);
         map.setZoom(18); 
-        $('#info').append("<tr><td><b>Name</b></td><td>:</td><td> "+nama+"</td></tr><tr><td><b>Address </b></td><td>:</td><td> "+address+"</td></tr>")
-        // <a class='btn btn-default fa fa-compass' title='Attraction Nearby' onclick='owsekitar("+latitude+","+longitude+",200);ow();owtampil();'></a></td></tr> ");
+        $('#info').append("<tr><td><b>Name</b></td><td>:</td><td> "+nama+"</td></tr><tr><td><b>Address </b></td><td>:</td><td> "+address+"</td></tr>")   
         infowindow = new google.maps.InfoWindow({
           position: centerBaru,
           content: "<span style=color:black><center><b>Information</b><br></center><br><i class='fa fa-home'></i> "+name+"<br><i class='fa fa-map-marker'></i> "+address+"<br><a role='button' title='Route from your position' class='btn btn-default fa fa-car' value='Route' onclick='callRoute(centerLokasi, centerBaru);rutetampil();'></a>&nbsp<a role='button' title='gallery' class='btn btn-default fa fa-picture-o' value='Gallery' onclick='galeri(\""+id+"\")'></a></span>",
