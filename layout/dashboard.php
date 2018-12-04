@@ -85,10 +85,15 @@
       <!--COMPLETED ACTIONS DONUTS CHART-->
       <section class="panel">
         <div class="panel-body">
-          <h3>Result</h3>
+          <h3>LAPORAN</h3>
             <div class="box-body" style="max-height:400px;overflow:auto;">
               <div class="form-group" id="hasilcari1" style="display:none;">
                 <table class="table table-bordered" id='hasilcari'>
+                    <tr>
+                       <th>NO LAPORAN</th>
+                       <th>Petugas Pelapor</th> 
+                       <th>Detail</th>
+                    </tr>
               </table>  
             </div>                   
           </div>
@@ -97,43 +102,7 @@
     </div>
 
 
-    <div class="col-sm-4" style="display:none;" id="eventt">
-      <section class="panel">
-        <div class="panel-body">
-          <a class="btn btn-compose">Korban Kecelakaan</a>
-          <div class="box-body" style="max-height:350px;overflow:auto;">
-            <div class="form-group" id="hasilcari1">
-              <table id="example1" class="table table-hover table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Event Name</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                    include ("/Basisdatalanjut/action/connect.php");
-                    $sql = pg_query("SELECT * FROM event order by id asc");
-                    while($data =  pg_fetch_array($sql)){
-                      $id = $data['id'];
-                      $name = $data['name'];
-                  ?>
-                  <tr>
-                    <td><?php echo "$id"; ?></td>
-                    <td><?php echo "$name"; ?></td>
-                    </div>
-                    </td>
-                  </tr>
-                  <?php
-                    }
-                  ?>
-                </tbody>
-              </table> 
-            </div>                   
-          </div>
-        </div>
-      </section>
-    </div>
+   
 
     <div class="col-sm-8" style="display:none;" id="infoo">
       <section class="panel">
@@ -154,6 +123,26 @@
               <table class="table" id='infocieklai1'>
                 
               </table>
+            </div> 
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-sm-8" style="display:none;" id="infokejahatan">
+      <section class="panel">
+        <div class="panel-body">
+          <a class="btn btn-compose">Information</a>
+          <div class="box-body" style="max-height:350px;overflow:auto;">
+            <div class="form-group">
+              <table class="table" id='infokj'>
+                <tbody  style='vertical-align:top;'>
+                  
+                </tbody> 
+              </table>
+              <a class="btn btn-compose">Korban</a>
+              <table class="table" id='infocieklaikj'>
+              
             </div> 
           </div>
         </div>

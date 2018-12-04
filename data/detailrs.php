@@ -2,7 +2,7 @@
 require '../action/connect.php';
 
 $cari = $_GET["cari"];
-$querysearch	= "select id_rumahsakit, nama, alamat, ST_X(ST_Centroid(geom)) AS longitude, ST_Y(ST_CENTROID(geom)) As latitude from rumah_sakit where id_rumahsakit='$cari'";
+$querysearch	= "SELECT id_rumahsakit, nama, alamat, ST_X(ST_Centroid(geom)) AS longitude, ST_Y(ST_CENTROID(geom)) As latitude FROM rumah_sakit WHERE id_rumahsakit='$cari'";
 			   
 $hasil=pg_query($querysearch);
 while($row = pg_fetch_array($hasil))

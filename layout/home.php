@@ -59,7 +59,7 @@
   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="result">
     <section class="panel">
       <div class="panel-body">
-        <h3>Result s</h3>
+        <h3>Result</h3>
           <div class="box-body" style="max-height:400px;overflow:auto;">
             <div class="form-group" id="hasilcari1" style="display:none;">
               <table class="table table-bordered" id='hasilcari'></table>

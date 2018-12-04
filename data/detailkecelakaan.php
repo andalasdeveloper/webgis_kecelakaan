@@ -2,17 +2,22 @@
 require '../action/connect.php';
 $cari = $_GET["cari"];
 
-$querysearch = "SELECT kecelakaan.id_kecelakaan AS id, kecelakaan.total_kerugian AS total_kerugian, kecelakaan.keterangan_lokasi AS keterangan_lokasi, kecelakaan.image AS image, ST_X(ST_Centroid(kecelakaan.geom)) AS lng, ST_Y(ST_CENTROID(kecelakaan.geom)) AS lat FROM kecelakaan WHERE id_kecelakaan='".$cari."'";
+$querysearch = "SELECT kecelakaan.id_kecelakaan AS id, kecelakaan.total_kerugian AS total_kerugian, kecelakaan.keterangan_lokasi AS keterangan_lokasi,kecelakaan.waktu_kejadian,jenis_kecelakaan.jenis_kecelakaan, kecelakaan.image AS image, ST_X(ST_Centroid(kecelakaan.geom)) AS lng, ST_Y(ST_CENTROID(kecelakaan.geom)) AS lat FROM kecelakaan 
+    JOIN jenis_kecelakaan on kecelakaan.id_jeniskecelakaan=jenis_kecelakaan.id_jenis    
+    WHERE id_kecelakaan='".$cari."'";
 $hasil=pg_query($querysearch);
 while($row = pg_fetch_array($hasil))
+    
 	{
 		  $id=$row['id'];
 		  $total_kerugian=$row['total_kerugian'];
 		  $keterangan_lokasi=$row['keterangan_lokasi'];
 		  $image=$row['image'];
+          $jenis=$row['jenis_kecelakaan'];
+          $waktu=$row['waktu_kejadian'];
 		  $longitude=$row['lng'];
 		  $latitude=$row['lat'];
-		  $dataarray[]=array('id'=>$id,'total_kerugian'=>$total_kerugian,'keterangan_lokasi'=>$keterangan_lokasi,
+		  $dataarray[]=array('id'=>$id,'total_kerugian'=>$total_kerugian,'jenis'=>$jenis,'waktu'=>$waktu,'keterangan_lokasi'=>$keterangan_lokasi,
 		  	'image'=>$image, 'longitude'=>$longitude,'latitude'=>$latitude);
 	}
 
