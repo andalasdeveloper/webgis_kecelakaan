@@ -690,6 +690,7 @@ function detailkecelakaan(id1){  //menampilkan informasi kecelakaan
         var nama = row.total_kerugian;
         var alamat=row.keterangan_lokasi;
         var waktu = row.waktu;
+        var jenis = row.jenis;
         var latitude  = row.latitude;
         var longitude = row.longitude ;
         centerBaru = new google.maps.LatLng(row.latitude, row.longitude);
@@ -708,7 +709,8 @@ function detailkecelakaan(id1){  //menampilkan informasi kecelakaan
           "<td> "+id1+"</td></tr><tr><td><b>Keterangan Lokasi </b>"+
           "</td><td>:</td><td> "+alamat+"</td></tr><tr><td><b>total_kerugian</b>"+
           "</td><td>:</td><td> "+nama+" </sup></td></tr><tr><td><tr><td><b>waktu kecelakaan</b>"+
-          "</td><td>:</td><td> "+waktu+" </sup></td></tr><tr><td>"+
+          "</td><td>:</td><td> "+waktu+" </sup></td></tr><tr><td><tr><td><b>Jenis Kecelakaan</b>"+
+          "</td><td>:</td><td> "+jenis+" </sup></td></tr><tr><td>"+
 
           "<a class='btn btn-default' role=button' data-toggle='collapse' href='#terdekat1' onclick='tampil_sekitar(\""+latitude+"\",\""+longitude+"\",\""+nama+"\")' title='Nearby' aria-controls='Nearby'>"+
           "<i class='fa fa-compass' style='color:black;''></i><label>&nbsp Attraction Nearby</label>"+
